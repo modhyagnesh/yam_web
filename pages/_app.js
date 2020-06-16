@@ -2,6 +2,8 @@
 /* eslint-disable no-restricted-globals */
 // import { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import '@styles/index.css';
+
 import { config, library } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css'; // Import the CSS
 

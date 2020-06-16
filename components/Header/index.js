@@ -11,17 +11,17 @@ const Header = () => {
       } else {
         navbarRef.current.classList.remove('fixed-header');
       }
-      const navlinks = document.querySelectorAll('a.nav-link');
-      navlinks.forEach((element) => {
-        const section = document.getElementById(element.hash.slice(1));
-        const scrollY = window.scrollY || window.pageYOffset;
-        const sectionHeight = section.offsetTop + section.clientHeight;
-        if (scrollY >= section.offsetTop && scrollY < sectionHeight) {
-          element.classList.add('active');
-        } else {
-          element.classList.remove('active');
-        }
-      });
+      // const navlinks = document.querySelectorAll('a.nav-link');
+      // navlinks.forEach((element) => {
+      //   const section = document.getElementById(element.hash.slice(1));
+      //   const scrollY = window.scrollY || window.pageYOffset;
+      //   const sectionHeight = section.offsetTop + section.clientHeight;
+      //   if (scrollY >= section.offsetTop && scrollY < sectionHeight) {
+      //     element.classList.add('active');
+      //   } else {
+      //     element.classList.remove('active');
+      //   }
+      // });
     };
     window.addEventListener('scroll', onScroll, false);
     return () => {

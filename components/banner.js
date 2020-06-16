@@ -17,7 +17,7 @@ const Banner = () => {
               <p>I'm the pixel crafter based in India. I make the visual to be more interactive.</p>
               <div className="btn-bar">
                 <a className="m-btn m-btn-theme" href="#contact">
-                  Contact us <FontAwesomeIcon icon="arrow-right" />
+                  Contact Me <FontAwesomeIcon icon="arrow-right" />
                 </a>
               </div>
             </div>
