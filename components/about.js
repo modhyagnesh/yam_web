@@ -1,36 +1,36 @@
 /* eslint-disable react/no-unescaped-entities */
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import PropTypes from 'prop-types';
 
-const About = () => {
+import classNames from 'classnames';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import './markdown.module.css';
+
+const About = ({ data }) => {
+  console.log('About -> data', data.content);
+
   return (
     <section id="aboutus" className="section p-0px-b">
       <div className="container">
         <div className="row align-items-center">
           <div className="col-md-6">
+            <div
+              className={classNames('about-left', 'markdown')}
+              dangerouslySetInnerHTML={{ __html: data.content }}
+            />
             <div className="about-left">
-              <h2>I'm Yagnesh Modh</h2>
-              <h3>I'm a Lead UX & UI designer based in India</h3>
-              <p>
-                I design and develop services for customers of all sizes, specializing in creating
-                stylish, modern websites, web services and online stores.
-              </p>
-              <p>
-                My passion is to design digital user experiences through the bold interface and
-                meaningful interactions. Check out my
-                <a className="m-btn-link theme-after" href="#portfolio">
-                  Portfolio
-                </a>
-              </p>
-
-              <a className="m-btn m-btn-theme" href="#contact">
-                Contact us <FontAwesomeIcon icon="arrow-right" />
+              <a className="m-btn m-btn-theme" href={data.button_link}>
+                {data.button_text} <FontAwesomeIcon icon="arrow-right" />
               </a>
             </div>
           </div>
           {/* col */}
           <div className="col-md-6 text-center sm-m-45px-t">
-            <img src="static/img/man.jpg" title="" alt="" />
+            <img
+              src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${data.about_img.url}`}
+              title=""
+              alt=""
+            />
           </div>
           {/* col */}
         </div>
@@ -39,6 +39,17 @@ const About = () => {
       {/* container */}
     </section>
   );
+};
+
+About.propTypes = {
+  data: PropTypes.shape({
+    content: PropTypes.string,
+    button_text: PropTypes.string,
+    button_link: PropTypes.string,
+    about_img: PropTypes.shape({
+      url: PropTypes.string,
+    }),
+  }).isRequired,
 };
 
 export default About;
