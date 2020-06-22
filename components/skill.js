@@ -117,11 +117,11 @@ const Skill = () => {
               </div>
               {/* /progress-lt */}
             </div>
-          </div>{' '}
+          </div>
           {/* col */}
-        </div>{' '}
+        </div>
         {/* row */}
-      </div>{' '}
+      </div>
       {/* container */}
     </section>
   );

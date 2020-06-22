@@ -1,7 +1,6 @@
-.markdown h4 {
-  font-family: 'Sunflower', sans-serif;
-}
-
+.markdown h2,
+.markdown h3,
+.markdown h4,
 .markdown h5 {
   font-family: 'Sunflower', sans-serif;
 }

@@ -13,18 +13,24 @@ import Testimonial from '@components/testimonial';
 import Blog from '@components/blog';
 import Contact from '@components/contact';
 import 'slick-carousel/slick/slick.css';
-import { getBanner, getAbout } from '@lib/api';
-import markdownToHtml from '@lib/markdownToHtml';
+import { getHomePage } from '@lib/api';
 
-const index = ({ banner, about }) => {
+// eslint-disable-next-line react/prop-types
+const index = ({ homePage: { home, aboutMe, counter } }) => {
   return (
     <Layout>
       <Head>
         <title>Next.js Blog Example with {CMS_NAME}</title>
       </Head>
-      {banner && <Banner data={banner} />}
-      {about && <About data={about} />}
-      <Counter />
+      <If condition={!!home}>
+        <Banner data={home} />
+      </If>
+      <If condition={!!aboutMe}>
+        <About data={aboutMe} />
+      </If>
+      <If condition={!!counter}>
+        <Counter data={counter} />
+      </If>
       <Services />
       <Skill />
       <Portfolio />
@@ -38,17 +44,17 @@ const index = ({ banner, about }) => {
 index.propTypes = {
   banner: PropTypes.shape({
     content: PropTypes.string,
-    button_text: PropTypes.string,
-    button_link: PropTypes.string,
-    background_image: PropTypes.shape({
+    buttonText: PropTypes.string,
+    buttonLink: PropTypes.string,
+    backgroundMedia: PropTypes.shape({
       url: PropTypes.string,
     }),
   }).isRequired,
   about: PropTypes.shape({
     content: PropTypes.string,
-    button_text: PropTypes.string,
-    button_link: PropTypes.string,
-    About_img: PropTypes.shape({
+    buttonText: PropTypes.string,
+    buttonLink: PropTypes.string,
+    profilePicture: PropTypes.shape({
       url: PropTypes.string,
     }),
   }).isRequired,
@@ -57,16 +63,11 @@ index.propTypes = {
 export default index;
 
 export async function getStaticProps() {
-  const { banner } = await getBanner();
-  const contentBanner = await markdownToHtml(banner.banner_text);
-
-  const { about } = await getAbout();
-  const contentAbout = await markdownToHtml(about.about_text);
+  const { homePage } = await getHomePage();
 
   return {
     props: {
-      banner: { ...banner, content: contentBanner },
-      about: { ...about, content: contentAbout },
+      homePage,
     },
   };
 }

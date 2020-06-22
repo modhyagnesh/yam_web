@@ -1,6 +1,7 @@
 {
   "presets": ["next/babel"],
   "plugins": [
+    "jsx-control-statements",
     [
       "module-resolver",
       {
