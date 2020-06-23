@@ -1,10 +1,11 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
 import { useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const Skill = () => {
+const Skill = ({ data }) => {
   const sectionRef = useRef(null);
   useEffect(() => {
     const onScroll = () => {
@@ -38,83 +39,32 @@ const Skill = () => {
         <div className="row">
           <div className="col-md-6">
             <div className="skill-left p-80px-r md-p-40px-r sm-p-0px-r sm-m-30px-b">
-              <h3 className="font-alt">Make beauty Things With Passion.</h3>
-              <p className="m-40px-b">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-              </p>
-              <a href="#" className="m-btn m-btn-theme">
-                Read More <FontAwesomeIcon icon="arrow-right" />
+              <h3 className="font-alt">{data.title}</h3>
+              <p className="m-40px-b">{data.description}</p>
+              <a href={data.buttonLink} className="m-btn m-btn-theme">
+                {data.buttonText} <FontAwesomeIcon icon="arrow-right" />
               </a>
             </div>
           </div>
           <div className="col-md-6">
             <div className="skills p-t-10px-sm">
-              <div className="progress-lt">
-                <h6>HTML</h6>
-                <span>92%</span>
-                <div className="progress">
-                  <div
-                    className="progress-bar theme-g-bg"
-                    role="progressbar"
-                    aria-valuenow="92"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  />
-                  {/* /progress-bar */}
+              <For each="item" of={data.skillList}>
+                <div className="progress-lt" key={item.id}>
+                  <h6>{item.skillName}</h6>
+                  <span>{`${item.experty}%`}</span>
+                  <div className="progress">
+                    <div
+                      className="progress-bar theme-g-bg"
+                      role="progressbar"
+                      aria-valuenow={item.experty}
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    />
+                    {/* /progress-bar */}
+                  </div>
+                  {/* /progress */}
                 </div>
-                {/* /progress */}
-              </div>
-              {/* /progress-lt */}
-              <div className="progress-lt">
-                <h6>CSS</h6>
-                <span>84%</span>
-                <div className="progress">
-                  <div
-                    className="progress-bar theme-g-bg"
-                    role="progressbar"
-                    aria-valuenow="84"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  />
-                  {/* /progress-bar */}
-                </div>
-                {/* /progress */}
-              </div>
-              {/* /progress-lt */}
-              <div className="progress-lt">
-                <h6>JavaScript</h6>
-                <span>88%</span>
-                <div className="progress">
-                  <div
-                    className="progress-bar theme-g-bg"
-                    role="progressbar"
-                    aria-valuenow="88"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  />
-                  {/* /progress-bar */}
-                </div>
-                {/* /progress */}
-              </div>
-              {/* /progress-lt */}
-
-              <div className="progress-lt">
-                <h6>PHp</h6>
-                <span>95%</span>
-                <div className="progress">
-                  <div
-                    className="progress-bar theme-g-bg"
-                    role="progressbar"
-                    aria-valuenow="95"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  />
-                  {/* /progress-bar */}
-                </div>
-                {/* /progress */}
-              </div>
+              </For>
               {/* /progress-lt */}
             </div>
           </div>

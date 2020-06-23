@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import markdownToHtml from '@lib/markdownToHtml';
 import './markdown.module.css';
 import useMarkdown from '@hooks/useMarkdown';
 

@@ -16,7 +16,7 @@ import 'slick-carousel/slick/slick.css';
 import { getHomePage } from '@lib/api';
 
 // eslint-disable-next-line react/prop-types
-const index = ({ homePage: { home, aboutMe, counter } }) => {
+const index = ({ home, aboutMe, counter, services, skills, portfolio, testimonial }) => {
   return (
     <Layout>
       <Head>
@@ -31,10 +31,18 @@ const index = ({ homePage: { home, aboutMe, counter } }) => {
       <If condition={!!counter}>
         <Counter data={counter} />
       </If>
-      <Services />
-      <Skill />
-      <Portfolio />
-      <Testimonial />
+      <If condition={!!services}>
+        <Services data={services} />
+      </If>
+      <If condition={!!skills}>
+        <Skill data={skills} />
+      </If>
+      <If condition={!!portfolio}>
+        <Portfolio data={portfolio} />
+      </If>
+      <If condition={!!testimonial}>
+        <Testimonial data={testimonial} />
+      </If>
       <Blog />
       <Contact />
     </Layout>
@@ -63,11 +71,36 @@ index.propTypes = {
 export default index;
 
 export async function getStaticProps() {
-  const { homePage } = await getHomePage();
+  const {
+    homePage: { home, aboutMe, counter, dynamicFields },
+  } = await getHomePage();
+
+  const { services, skills, portfolio, testimonial } = dynamicFields.reduce((p, c) => {
+    // eslint-disable-next-line no-underscore-dangle
+    switch (c.__typename) {
+      case 'ComponentHomePageServices':
+        return { ...p, services: c };
+      case 'ComponentHomePageSkills':
+        return { ...p, skills: c };
+      case 'ComponentHomePagePortfolio':
+        return { ...p, portfolio: c };
+      case 'ComponentHomePageTestimonial':
+        return { ...p, testimonial: c };
+
+      default:
+        return p;
+    }
+  }, {});
 
   return {
     props: {
-      homePage,
+      home,
+      aboutMe,
+      counter,
+      services,
+      skills,
+      portfolio,
+      testimonial,
     },
   };
 }

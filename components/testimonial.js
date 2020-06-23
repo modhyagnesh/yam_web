@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/no-unescaped-entities */
 import Slider from 'react-slick';
 
-const Testimonial = () => {
+const Testimonial = ({ data }) => {
   const settings = {
     dots: true,
     infinite: true,
@@ -40,66 +41,28 @@ const Testimonial = () => {
         <div className="row justify-content-center m-60px-b md-m-25px-b">
           <div className="col-12 col-md-10 col-lg-7">
             <div className="section-title text-center">
-              <h2 className="font-alt">What People Say About me?</h2>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                exercitation ullamco laboris nisi
-              </p>
+              <h2 className="font-alt">{data.title}</h2>
+              <p>{data.description}</p>
             </div>
           </div>
         </div>
         <Slider {...settings}>
-          <div className="testimonial-col">
-            <div className="img">
-              <img src="static/img/avtar1.jpg" alt="Yagnesh" title="Yagnesh" />
+          <For each="item" of={data.testimonialList}>
+            <div className="testimonial-col" key={item.id}>
+              <div className="img">
+                <img
+                  src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${item.avatar.url}`}
+                  alt="Yagnesh"
+                  title="Yagnesh"
+                />
+              </div>
+              <h6>{item.name}</h6>
+              <p>{item.testimonial}</p>
             </div>
-            <h6>Jennifer Lutheran</h6>
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-              has been the industry's standard dummy text ever since the 1500s.
-            </p>
-          </div>
-          {/* col */}
-          <div className="testimonial-col">
-            <div className="img">
-              <img src="static/img/avtar2.jpg" alt="Yagnesh" title="Yagnesh" />
-            </div>
-            <h6>Jennifer Lutheran</h6>
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-              has been the industry's standard dummy text ever since the 1500s.
-            </p>
-          </div>
-          {/* col */}
-          <div className="testimonial-col">
-            <div className="img">
-              <img src="static/img/avtar3.jpg" alt="Yagnesh" title="Yagnesh" />
-            </div>
-            <h6>Jennifer Lutheran</h6>
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-              has been the industry's standard dummy text ever since the 1500s.
-            </p>
-          </div>
-          {/* col */}
-          <div className="testimonial-col">
-            <div className="img">
-              <img src="static/img/avtar1.jpg" alt="Yagnesh" title="Yagnesh" />
-            </div>
-            <h6>Jennifer Lutheran</h6>
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-              has been the industry's standard dummy text ever since the 1500s.
-            </p>
-          </div>
+          </For>
           {/* col */}
         </Slider>
       </div>
-      {/* owl */}
-      {/* col */}
-      {/* row */}
-      {/* container */}
     </section>
   );
 };
