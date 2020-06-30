@@ -3,7 +3,7 @@
 import PropTypes from 'prop-types';
 
 import classNames from 'classnames';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useMarkdown from '@hooks/useMarkdown';
 import './markdown.module.css';
 
@@ -19,17 +19,19 @@ const About = ({ data }) => {
               dangerouslySetInnerHTML={{ __html: HTML }}
             />
             <div className="about-left">
-              <a className="m-btn m-btn-theme" href={data.buttonLink}>
-                {data.buttonText} <FontAwesomeIcon icon="arrow-right" />
+              <a className="m-btn m-btn-theme" aria-label={data.buttonText} href={data.buttonLink}>
+                {data.buttonText}
+                {/* <FontAwesomeIcon icon="arrow-right" /> */}
               </a>
             </div>
           </div>
           {/* col */}
           <div className="col-md-6 text-center sm-m-45px-t">
             <img
-              src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${data.profilePicture.url}`}
-              title=""
-              alt=""
+              className="lazyload"
+              data-src={data.profilePicture.url.replace('upload/', 'upload/f_auto,q_70,w_320/')}
+              title="Profile Picture"
+              alt="Profile avatar"
             />
           </div>
           {/* col */}

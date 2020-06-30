@@ -1,28 +1,14 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { useEffect, useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useState } from 'react';
+import { CSSTransition } from 'react-transition-group';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames';
 import { decamelize } from '@utils';
 
 const Portfolio = ({ data }) => {
-  const [iso, setISO] = useState(null);
-
-  useEffect(() => {
-    setISO(
-      // eslint-disable-next-line jsx-control-statements/jsx-jcs-no-undef
-      new Isotope('.portfolio-content', {
-        resizable: false,
-        itemSelector: '.portfolio-item',
-        layoutMode: 'masonry',
-        filter: '*',
-      }),
-    );
-  }, []);
-
-  const filter = (e) => {
-    iso.arrange({ filter: e.target.getAttribute('data-filter') });
-  };
+  const [category, setCategory] = useState('');
 
   return (
     <section id="portfolio" className="section gray-bg">
@@ -37,44 +23,61 @@ const Portfolio = ({ data }) => {
         </div>
         <div className="portfolio-filter m-30px-b">
           <ul className="filter text-center">
-            <li role="presentation" className="active" data-filter="*" onClick={filter}>
+            <li
+              className={classNames({ active: category === '' })}
+              data-filter="*"
+              onClick={() => setCategory('')}
+              onKeyPress={() => setCategory('')}
+            >
               All
             </li>
             <For each="item" of={[...new Set(data.portfolioList.map((x) => x.category))]}>
-              <li role="presentation" data-filter={`.${item}`} onClick={filter} key={item}>
+              <li
+                className={classNames({ active: category === item })}
+                data-filter={`.${item}`}
+                onClick={() => setCategory(item)}
+                onKeyPress={() => setCategory(item)}
+                key={item}
+              >
                 {decamelize(item)}
               </li>
             </For>
           </ul>
         </div>
         {/* Portfolio Filter */}
-        <div className="portfolio-content">
-          <ul className="portfolio-cols portfolio-cols-3">
-            <For each="item" of={data.portfolioList}>
+        <ul className="portfolio-cols portfolio-cols-3">
+          <For each="item" of={data.portfolioList}>
+            <CSSTransition
+              in={category === item.category || category === ''}
+              timeout={300}
+              classNames="fade"
+              unmountOnExit
+            >
               <li className={classNames('portfolio-item', item.category)} key={item.id}>
                 <div className="portfolio-col portfolio-hover-01">
                   <div className="portfolio-img">
-                    <a href="#">
+                    <a href="#" aria-label="portfolio Images">
                       <img
-                        src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${item.portfolioImages[0].url}`}
-                        title=""
-                        alt=""
+                        className="lazyload"
+                        data-src={item.portfolioImages[0].url}
+                        title="portfolio Images"
+                        alt="portfolio"
                       />
                     </a>
                     <div className="hover">
                       <div className="action-btn">
                         <a href={item.videoLink} className="popup-video theme-color">
-                          <FontAwesomeIcon icon="play" />
+                          {/* <FontAwesomeIcon icon="play" /> */}
                         </a>
                         <a
                           className="lightbox-gallery theme-color"
                           href={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${item.portfolioImages[0].url}`}
                           title="Lightbox gallery image title..."
                         >
-                          <FontAwesomeIcon icon="expand" />
+                          {/* <FontAwesomeIcon icon="expand" /> */}
                         </a>
                         <a href={item.portfolioLink} className="theme-color">
-                          <FontAwesomeIcon icon="link" />
+                          {/* <FontAwesomeIcon icon="link" /> */}
                         </a>
                       </div>
                       {/* Video Btn */}
@@ -89,11 +92,11 @@ const Portfolio = ({ data }) => {
                 </div>
                 {/* Portfolio */}
               </li>
-            </For>
-            {/* col */}
-          </ul>
-          {/* row */}
-        </div>
+            </CSSTransition>
+          </For>
+          {/* col */}
+        </ul>
+        {/* row */}
         {/* portfolio content */}
       </div>
       {/* Container */}

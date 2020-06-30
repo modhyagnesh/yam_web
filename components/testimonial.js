@@ -51,7 +51,8 @@ const Testimonial = ({ data }) => {
             <div className="testimonial-col" key={item.id}>
               <div className="img">
                 <img
-                  src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${item.avatar.url}`}
+                  className="lazyload"
+                  data-src={item.avatar.url}
                   alt="Yagnesh"
                   title="Yagnesh"
                 />

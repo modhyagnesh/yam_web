@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
 import { useEffect, useRef } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Skill = ({ data }) => {
   const sectionRef = useRef(null);
@@ -34,7 +34,7 @@ const Skill = ({ data }) => {
   }, []);
 
   return (
-    <section id="aboutus" className="section skill-section" ref={sectionRef}>
+    <section id="skill" className="section skill-section" ref={sectionRef}>
       <div className="container">
         <div className="row">
           <div className="col-md-6">
@@ -42,7 +42,8 @@ const Skill = ({ data }) => {
               <h3 className="font-alt">{data.title}</h3>
               <p className="m-40px-b">{data.description}</p>
               <a href={data.buttonLink} className="m-btn m-btn-theme">
-                {data.buttonText} <FontAwesomeIcon icon="arrow-right" />
+                {data.buttonText}
+                {/* <FontAwesomeIcon icon="arrow-right" /> */}
               </a>
             </div>
           </div>

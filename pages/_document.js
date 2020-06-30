@@ -6,17 +6,32 @@ export default class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-          <link
-            rel="stylesheet"
-            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-            integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
-            crossOrigin="anonymous"
-          />
+          <link rel="preconnect" href="https://res.cloudinary.com" />
+          <link rel="preconnect" href="http://localhost:1337" />
+          {/* <link rel="preconnect" href="https://fonts.googleapis.com/" /> */}
+          {/* <link rel="preconnect" href="https://ajax.googleapis.com/" /> */}
         </Head>
+
         <body data-spy="scroll" data-target="#navbarYagnesh" data-offset="98">
           <Main />
-          <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js" />
           <NextScript />
+          {/* <script
+            dangerouslySetInnerHTML={{
+              __html: `
+var WebFontConfig = {
+	google: {families: [ '${face}' ]}
+};
+(function() {
+	var wf = document.createElement('script');
+	wf.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+	wf.type = 'text/javascript';
+	wf.async = 'true';
+	var s = document.getElementsByTagName('script')[0];
+	s.parentNode.insertBefore(wf, s);
+})();
+			`,
+            }}
+          /> */}
         </body>
       </Html>
     );

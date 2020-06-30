@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Blog = () => {
   return (
@@ -22,17 +22,26 @@ const Blog = () => {
         <div className="row">
           <div className="col-md-4">
             <div className="blog-item md-m-15px-tb">
-              <a href="#">
-                <img src="static/img/blog-img2.jpg" title="Yagnesh" alt="Yagnesh" />
+              <a href="#" aria-label="blog image">
+                <img
+                  className="lazyload"
+                  data-src="static/img/blog-img2.jpg"
+                  title="Yagnesh"
+                  alt="Yagnesh"
+                />
               </a>
               <div className="blog-content">
                 <div className="post-meta">
-                  By <a href="#">John Doe</a> <span>03.02.2018</span>
+                  By
+                  <a href="#" aria-label="name">
+                    John Doe
+                  </a>
+                  <span>03.02.2018</span>
                 </div>
                 {/* /post-meta */}
 
                 <h4>
-                  <a className="theme-color" href="#">
+                  <a className="theme-color" href="#" aria-label="description">
                     Lorem ipsum dolor sit amet.
                   </a>
                 </h4>
@@ -40,8 +49,9 @@ const Blog = () => {
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
                   incididunt ut labore et dolore magna aliqua.
                 </p>
-                <a href="#" className="more-btn">
-                  Read More <FontAwesomeIcon icon="arrow-right" />
+                <a href="#" className="more-btn" aria-label="Read More">
+                  Read More
+                  {/* <FontAwesomeIcon icon="arrow-right" /> */}
                 </a>
               </div>
               {/* /blog-content */}
@@ -50,17 +60,26 @@ const Blog = () => {
           </div>
           <div className="col-md-4 md-m-15px-tb">
             <div className="blog-item">
-              <a href="#">
-                <img src="static/img/blog-img3.jpg" title="Yagnesh" alt="Yagnesh" />
+              <a href="#" aria-label="blog image">
+                <img
+                  className="lazyload"
+                  data-src="static/img/blog-img3.jpg"
+                  title="Yagnesh"
+                  alt="Yagnesh"
+                />
               </a>
               <div className="blog-content">
                 <div className="post-meta">
-                  By <a href="#">John Doe</a> <span>03.02.2018</span>
+                  By
+                  <a href="#" aria-label="name">
+                    John Doe
+                  </a>
+                  <span>03.02.2018</span>
                 </div>
                 {/* /post-meta */}
 
                 <h4>
-                  <a className="theme-color" href="#">
+                  <a className="theme-color" href="#" aria-label="description">
                     Lorem ipsum dolor sit amet.
                   </a>
                 </h4>
@@ -68,8 +87,9 @@ const Blog = () => {
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
                   incididunt ut labore et dolore magna aliqua.
                 </p>
-                <a href="#" className="more-btn">
-                  Read More <FontAwesomeIcon icon="arrow-right" />
+                <a href="#" className="more-btn" aria-label="Read More">
+                  Read More
+                  {/* <FontAwesomeIcon icon="arrow-right" /> */}
                 </a>
               </div>
               {/* /blog-content */}
@@ -79,17 +99,26 @@ const Blog = () => {
 
           <div className="col-md-4 md-m-15px-tb">
             <div className="blog-item">
-              <a href="#">
-                <img src="static/img/blog-img4.jpg" title="Yagnesh" alt="Yagnesh" />
+              <a href="#" aria-label="blog image">
+                <img
+                  className="lazyload"
+                  data-src="static/img/blog-img4.jpg"
+                  title="Yagnesh"
+                  alt="Yagnesh"
+                />
               </a>
               <div className="blog-content">
                 <div className="post-meta">
-                  By <a href="#">John Doe</a> <span>03.02.2018</span>
+                  By
+                  <a href="#" aria-label="name">
+                    John Doe
+                  </a>
+                  <span>03.02.2018</span>
                 </div>
                 {/* /post-meta */}
 
                 <h4>
-                  <a className="theme-color" href="#">
+                  <a className="theme-color" href="#" aria-label="description">
                     Lorem ipsum dolor sit amet.
                   </a>
                 </h4>
@@ -97,8 +126,9 @@ const Blog = () => {
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
                   incididunt ut labore et dolore magna aliqua.
                 </p>
-                <a href="#" className="more-btn">
-                  Read More <FontAwesomeIcon icon="arrow-right" />
+                <a href="#" className="more-btn" aria-label="Read More">
+                  Read More
+                  {/* <FontAwesomeIcon icon="arrow-right" /> */}
                 </a>
               </div>
               {/* /blog-content */}

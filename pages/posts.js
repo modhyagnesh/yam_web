@@ -1,19 +1,15 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import Head from 'next/head';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Layout from '@components/layout';
 import { CMS_NAME } from '@constants';
-import Banner from '@components/banner';
 
-const Resume = () => {
+const posts = () => {
   return (
     <Layout>
       <Head>
         <title>Next.js Blog Example with {CMS_NAME}</title>
       </Head>
-      {/* Page Title */}
-      <Banner />
-      {/* / */}
 
       <section className="section blog-lising">
         <div className="container">
@@ -27,7 +23,6 @@ const Resume = () => {
                   <div className="post-meta">
                     By <a href="">John Doe</a> <span>03.02.2018</span>
                   </div>
-                  {/* /post-meta */}
 
                   <h4>
                     <a className="theme-color" href="#">
@@ -39,12 +34,11 @@ const Resume = () => {
                     incididunt ut labore et dolore magna aliqua.
                   </p>
                   <a href="#" className="more-btn">
-                    Read More <FontAwesomeIcon icon="arrow-right" />
+                    Read More
+                    {/* <FontAwesomeIcon icon="arrow-right" /> */}
                   </a>
                 </div>
-                {/* /blog-content */}
               </div>
-              {/* Blog Item */}
             </div>
             <div className="col-12 col-md-6 col-lg-4">
               <div className="blog-item md-m-15px-tb">
@@ -55,7 +49,6 @@ const Resume = () => {
                   <div className="post-meta">
                     By <a href="">John Doe</a> <span>03.02.2018</span>
                   </div>
-                  {/* /post-meta */}
 
                   <h4>
                     <a className="theme-color" href="#">
@@ -67,12 +60,11 @@ const Resume = () => {
                     incididunt ut labore et dolore magna aliqua.
                   </p>
                   <a href="#" className="more-btn">
-                    Read More <FontAwesomeIcon icon="arrow-right" />
+                    Read More
+                    {/* <FontAwesomeIcon icon="arrow-right" /> */}
                   </a>
                 </div>
-                {/* /blog-content */}
               </div>
-              {/* Blog Item */}
             </div>
             <div className="col-12 col-md-12 col-lg-4">
               <div className="blog-item md-m-15px-tb">
@@ -83,7 +75,6 @@ const Resume = () => {
                   <div className="post-meta">
                     By <a href="">John Doe</a> <span>03.02.2018</span>
                   </div>
-                  {/* /post-meta */}
 
                   <h4>
                     <a className="theme-color" href="#">
@@ -95,12 +86,11 @@ const Resume = () => {
                     incididunt ut labore et dolore magna aliqua.
                   </p>
                   <a href="#" className="more-btn">
-                    Read More <FontAwesomeIcon icon="arrow-right" />
+                    Read More
+                    {/* <FontAwesomeIcon icon="arrow-right" /> */}
                   </a>
                 </div>
-                {/* /blog-content */}
               </div>
-              {/* Blog Item */}
             </div>
 
             <div className="col-12 col-md-6 col-lg-4">
@@ -112,7 +102,6 @@ const Resume = () => {
                   <div className="post-meta">
                     By <a href="">John Doe</a> <span>03.02.2018</span>
                   </div>
-                  {/* /post-meta */}
 
                   <h4>
                     <a className="theme-color" href="#">
@@ -124,12 +113,11 @@ const Resume = () => {
                     incididunt ut labore et dolore magna aliqua.
                   </p>
                   <a href="#" className="more-btn">
-                    Read More <FontAwesomeIcon icon="arrow-right" />
+                    Read More
+                    {/* <FontAwesomeIcon icon="arrow-right" /> */}
                   </a>
                 </div>
-                {/* /blog-content */}
               </div>
-              {/* Blog Item */}
             </div>
             <div className="col-12 col-md-6 col-lg-4">
               <div className="blog-item md-m-15px-tb">
@@ -140,7 +128,6 @@ const Resume = () => {
                   <div className="post-meta">
                     By <a href="">John Doe</a> <span>03.02.2018</span>
                   </div>
-                  {/* /post-meta */}
 
                   <h4>
                     <a className="theme-color" href="#">
@@ -152,12 +139,11 @@ const Resume = () => {
                     incididunt ut labore et dolore magna aliqua.
                   </p>
                   <a href="#" className="more-btn">
-                    Read More <FontAwesomeIcon icon="arrow-right" />
+                    Read More
+                    {/* <FontAwesomeIcon icon="arrow-right" /> */}
                   </a>
                 </div>
-                {/* /blog-content */}
               </div>
-              {/* Blog Item */}
             </div>
             <div className="col-12 col-md-12 col-lg-4">
               <div className="blog-item md-m-15px-tb">
@@ -168,7 +154,6 @@ const Resume = () => {
                   <div className="post-meta">
                     By <a href="">John Doe</a> <span>03.02.2018</span>
                   </div>
-                  {/* /post-meta */}
 
                   <h4>
                     <a className="theme-color" href="#">
@@ -180,12 +165,11 @@ const Resume = () => {
                     incididunt ut labore et dolore magna aliqua.
                   </p>
                   <a href="#" className="more-btn">
-                    Read More <FontAwesomeIcon icon="arrow-right" />
+                    Read More
+                    {/* <FontAwesomeIcon icon="arrow-right" /> */}
                   </a>
                 </div>
-                {/* /blog-content */}
               </div>
-              {/* Blog Item */}
             </div>
 
             <div className="col-12 col-md-6 col-lg-4">
@@ -197,7 +181,6 @@ const Resume = () => {
                   <div className="post-meta">
                     By <a href="">John Doe</a> <span>03.02.2018</span>
                   </div>
-                  {/* /post-meta */}
 
                   <h4>
                     <a className="theme-color" href="#">
@@ -209,12 +192,11 @@ const Resume = () => {
                     incididunt ut labore et dolore magna aliqua.
                   </p>
                   <a href="#" className="more-btn">
-                    Read More <FontAwesomeIcon icon="arrow-right" />
+                    Read More
+                    {/* <FontAwesomeIcon icon="arrow-right" /> */}
                   </a>
                 </div>
-                {/* /blog-content */}
               </div>
-              {/* Blog Item */}
             </div>
             <div className="col-12 col-md-6 col-lg-4">
               <div className="blog-item md-m-15px-tb">
@@ -225,7 +207,6 @@ const Resume = () => {
                   <div className="post-meta">
                     By <a href="">John Doe</a> <span>03.02.2018</span>
                   </div>
-                  {/* /post-meta */}
 
                   <h4>
                     <a className="theme-color" href="#">
@@ -237,12 +218,11 @@ const Resume = () => {
                     incididunt ut labore et dolore magna aliqua.
                   </p>
                   <a href="#" className="more-btn">
-                    Read More <FontAwesomeIcon icon="arrow-right" />
+                    Read More
+                    {/* <FontAwesomeIcon icon="arrow-right" /> */}
                   </a>
                 </div>
-                {/* /blog-content */}
               </div>
-              {/* Blog Item */}
             </div>
             <div className="col-12 col-md-12 col-lg-4">
               <div className="blog-item md-m-15px-tb">
@@ -253,7 +233,6 @@ const Resume = () => {
                   <div className="post-meta">
                     By <a href="">John Doe</a> <span>03.02.2018</span>
                   </div>
-                  {/* /post-meta */}
 
                   <h4>
                     <a className="theme-color" href="#">
@@ -265,15 +244,14 @@ const Resume = () => {
                     incididunt ut labore et dolore magna aliqua.
                   </p>
                   <a href="#" className="more-btn">
-                    Read More <FontAwesomeIcon icon="arrow-right" />
+                    Read More
+                    {/* <FontAwesomeIcon icon="arrow-right" /> */}
                   </a>
                 </div>
-                {/* /blog-content */}
               </div>
-              {/* Blog Item */}
             </div>
           </div>
-          {/* row */}
+
           <div className="bottom-pagination">
             <ul className="pagination justify-content-center">
               <li className="page-item disabled">
@@ -309,4 +287,4 @@ const Resume = () => {
   );
 };
 
-export default Resume;
+export default posts;

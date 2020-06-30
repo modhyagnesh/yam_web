@@ -26,7 +26,7 @@ const Posts = () => {
             <div className="col-12 col-md-12 col-lg-9 p-50px-r md-p-15px-r">
               <div className="bog-content-area">
                 <div className="m-30px-b">
-                  <img src="static/img/overlay-1.png" title="" alt="" />
+                  <img className="lazyload" data-src="static/img/overlay-1.png" title="" alt="" />
                 </div>
                 <p>
                   <span className="first-letter">L</span>orem ipsum dolor sit amet, consectetur
@@ -130,7 +130,12 @@ const Posts = () => {
                   <li>
                     <div className="row">
                       <div className="col-6 col-lg-2 col-md-3 sm-m-15px-b">
-                        <img src="static/img/avtar1.jpg" title="" alt="" />
+                        <img
+                          className="lazyload"
+                          data-src="static/img/avtar1.jpg"
+                          title=""
+                          alt=""
+                        />
                       </div>
                       {/* col */}
                       <div className="col-lg-10 col-md-9">
@@ -155,7 +160,12 @@ const Posts = () => {
                       <li>
                         <div className="row">
                           <div className="col-6 col-lg-2 col-md-3 sm-m-15px-b">
-                            <img src="static/img/avtar1.jpg" title="" alt="" />
+                            <img
+                              className="lazyload"
+                              data-src="static/img/avtar1.jpg"
+                              title=""
+                              alt=""
+                            />
                           </div>
                           {/* col */}
                           <div className="col-lg-10 col-md-9">
@@ -184,7 +194,12 @@ const Posts = () => {
                   <li>
                     <div className="row">
                       <div className="col-6 col-lg-2 col-md-3 sm-m-15px-b">
-                        <img src="static/img/avtar1.jpg" title="" alt="" />
+                        <img
+                          className="lazyload"
+                          data-src="static/img/avtar1.jpg"
+                          title=""
+                          alt=""
+                        />
                       </div>
                       {/* col */}
                       <div className="col-lg-10 col-md-9">
@@ -271,7 +286,7 @@ const Posts = () => {
                 <h5 className="widget-title font-alt">ABOUT ME</h5>
                 <div className="widget-about">
                   <div className="avtar">
-                    <img src="static/img/team1.jpg" alt="" title="" />
+                    <img className="lazyload" data-src="static/img/team1.jpg" alt="" title="" />
                   </div>
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.
@@ -314,7 +329,12 @@ const Posts = () => {
                   <ul className="latest-post">
                     <li>
                       <div className="lp-img">
-                        <img src="static/img/blog-img4.jpg" title="Ryan" alt="Ryan" />
+                        <img
+                          className="lazyload"
+                          data-src="static/img/blog-img4.jpg"
+                          title="Ryan"
+                          alt="Ryan"
+                        />
                       </div>
                       <div className="lp-text">
                         <h6>
@@ -327,7 +347,12 @@ const Posts = () => {
                     </li>
                     <li>
                       <div className="lp-img">
-                        <img src="static/img/blog-img4.jpg" title="Ryan" alt="Ryan" />
+                        <img
+                          className="lazyload"
+                          data-src="static/img/blog-img4.jpg"
+                          title="Ryan"
+                          alt="Ryan"
+                        />
                       </div>
                       <div className="lp-text">
                         <h6>
@@ -340,7 +365,12 @@ const Posts = () => {
                     </li>
                     <li>
                       <div className="lp-img">
-                        <img src="static/img/blog-img4.jpg" title="Ryan" alt="Ryan" />
+                        <img
+                          className="lazyload"
+                          data-src="static/img/blog-img4.jpg"
+                          title="Ryan"
+                          alt="Ryan"
+                        />
                       </div>
                       <div className="lp-text">
                         <h6>

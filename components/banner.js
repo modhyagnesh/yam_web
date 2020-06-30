@@ -1,17 +1,22 @@
+/* eslint-disable react/prop-types */
 import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './markdown.module.css';
 import useMarkdown from '@hooks/useMarkdown';
 
 /* eslint-disable react/no-unescaped-entities */
 const Banner = ({ data }) => {
   const { HTML } = useMarkdown(data.content);
+
   return (
     <section
       id="home-box"
       className="home-banner-01"
       style={{
-        backgroundImage: `url(${process.env.NEXT_PUBLIC_STRAPI_API_URL}${data.backgroundMedia.url})`,
+        backgroundImage: `url(${data.backgroundMedia.url.replace(
+          'upload/',
+          'upload/f_auto,q_70/',
+        )})`,
       }}
     >
       <div className="container">
@@ -20,8 +25,13 @@ const Banner = ({ data }) => {
             <div className="home-text-center">
               <div className="markdown" dangerouslySetInnerHTML={{ __html: HTML }} />
               <div className="btn-bar">
-                <a className="m-btn m-btn-theme" href={data.buttonLink}>
-                  {data.buttonText} <FontAwesomeIcon icon="arrow-right" />
+                <a
+                  className="m-btn m-btn-theme"
+                  href={data.buttonLink}
+                  aria-label={data.buttonText}
+                >
+                  {data.buttonText}
+                  {/* <FontAwesomeIcon icon="arrow-right" /> */}
                 </a>
               </div>
             </div>
@@ -31,7 +41,7 @@ const Banner = ({ data }) => {
         </div>
       </div>
       {/*  container */}
-      <a href="#aboutus" data-scroll="smooth" className="mouse-icon hidden-sm">
+      <a href="#aboutus" data-scroll="smooth" className="mouse-icon hidden-sm" aria-label="wheel">
         <span className="wheel" />
       </a>
     </section>

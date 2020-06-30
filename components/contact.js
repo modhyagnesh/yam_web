@@ -1,4 +1,5 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+/* eslint-disable jsx-a11y/label-has-associated-control */
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Contact = () => {
   return (
@@ -28,7 +29,7 @@ const Contact = () => {
                 </p>
                 <div className="contact-info">
                   <span className="icon theme-bg">
-                    <FontAwesomeIcon icon="directions" />
+                    {/* <FontAwesomeIcon icon="directions" /> */}
                   </span>
                   <p>
                     301 The Greenhouse,
@@ -37,9 +38,7 @@ const Contact = () => {
                 </div>
 
                 <div className="contact-info">
-                  <span className="icon theme-bg">
-                    <FontAwesomeIcon icon="envelope" />
-                  </span>
+                  <span className="icon theme-bg">{/* <FontAwesomeIcon icon="envelope" /> */}</span>
                   <p>
                     info@example.com
                     <br />
@@ -49,7 +48,7 @@ const Contact = () => {
 
                 <div className="contact-info">
                   <span className="icon theme-bg">
-                    <FontAwesomeIcon icon="mobile-alt" />
+                    {/* <FontAwesomeIcon icon="mobile-alt" /> */}
                   </span>
                   <p>
                     +1 800-222-000,
@@ -64,27 +63,48 @@ const Contact = () => {
                 <h2>Say Something</h2>
                 <form>
                   <div className="form-group">
-                    <input name="Phone" placeholder="Name" className="form-control" type="text" />
+                    <label htmlFor="phone" className="hidden">
+                      Phone
+                    </label>
+                    <input
+                      id="phone"
+                      name="Phone"
+                      placeholder="Name"
+                      className="form-control"
+                      type="text"
+                    />
                   </div>
                   <div className="form-group">
+                    <label htmlFor="email" className="hidden">
+                      Email
+                    </label>
                     <input
                       name="Email"
+                      id="email"
                       placeholder="Emaile"
                       className="form-control"
                       type="email"
                     />
                   </div>
                   <div className="form-group">
+                    <label htmlFor="subject" className="hidden">
+                      Subject
+                    </label>
                     <input
                       name="Subject"
+                      id="subject"
                       placeholder="Subject"
                       className="form-control"
                       type="text"
                     />
                   </div>
                   <div className="form-group">
+                    <label htmlFor="comment" className="hidden">
+                      Comment
+                    </label>
                     <textarea
                       name="comment"
+                      id="comment"
                       placeholder="Describe your project"
                       rows="3"
                       className="form-control"

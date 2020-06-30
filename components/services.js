@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 // eslint-disable-next-line no-unused-vars
 const Services = ({ data }) => {
@@ -22,14 +22,15 @@ const Services = ({ data }) => {
             <div className="col-12 col-md-6 col-lg-4" key={item.id}>
               <div className="feature-box-02">
                 <span className="icon theme-bg">
-                  <FontAwesomeIcon icon={item.icon.split('_')} />
+                  {/* <FontAwesomeIcon icon={item.icon.split('_')} /> */}
                 </span>
                 <div>
                   <h5>{item.title}</h5>
                   <p>{item.description}</p>
                   <div className="read-more">
                     <a href="#" className="more-btn">
-                      Read More <FontAwesomeIcon icon="arrow-right" />
+                      Read More
+                      {/* <FontAwesomeIcon icon="arrow-right" /> */}
                     </a>
                   </div>
                 </div>

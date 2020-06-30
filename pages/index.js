@@ -1,27 +1,48 @@
 import Head from 'next/head';
-import PropTypes from 'prop-types';
-
+import dynamic from 'next/dynamic';
 import { CMS_NAME } from '@constants';
 import Layout from '@components/layout';
-import Banner from '@components/banner';
-import About from '@components/about';
-import Counter from '@components/counter';
-import Services from '@components/services';
-import Skill from '@components/skill';
-import Portfolio from '@components/portfolio';
-import Testimonial from '@components/testimonial';
-import Blog from '@components/blog';
-import Contact from '@components/contact';
-import 'slick-carousel/slick/slick.css';
-import { getHomePage } from '@lib/api';
 
-// eslint-disable-next-line react/prop-types
-const index = ({ home, aboutMe, counter, services, skills, portfolio, testimonial }) => {
+import 'slick-carousel/slick/slick.css';
+import useHomePage from '../hooks/useHomePage';
+
+const Banner = dynamic(import('@components/banner'));
+const About = dynamic(import('@components/about'));
+const Counter = dynamic(import('@components/counter'));
+const Services = dynamic(import('@components/services'));
+const Skill = dynamic(import('@components/skill'));
+const Portfolio = dynamic(import('@components/portfolio'));
+const Testimonial = dynamic(import('@components/testimonial'));
+const Blog = dynamic(import('@components/blog'));
+const Contact = dynamic(import('@components/contact'));
+const Loading = dynamic(import('@components/Loading'));
+
+const Homepage = () => {
+  const { data, error } = useHomePage();
+
+  if (error) return <div>failed to load</div>;
+  if (!data) return <Loading />;
+
+  const { home, aboutMe, counter, dynamicFields } = data;
+  const { services, skills, portfolio, testimonial } = dynamicFields.reduce((p, c) => {
+    // eslint-disable-next-line no-underscore-dangle
+    switch (c.__component) {
+      case 'home-page.services':
+        return { ...p, services: c };
+      case 'home-page.skills':
+        return { ...p, skills: c };
+      case 'home-page.portfolio':
+        return { ...p, portfolio: c };
+      case 'home-page.testimonial':
+        return { ...p, testimonial: c };
+
+      default:
+        return p;
+    }
+  }, {});
+
   return (
-    <Layout>
-      <Head>
-        <title>Next.js Blog Example with {CMS_NAME}</title>
-      </Head>
+    <>
       <If condition={!!home}>
         <Banner data={home} />
       </If>
@@ -45,62 +66,22 @@ const index = ({ home, aboutMe, counter, services, skills, portfolio, testimonia
       </If>
       <Blog />
       <Contact />
+    </>
+  );
+};
+
+// eslint-disable-next-line react/prop-types
+const index = () => {
+  return (
+    <Layout>
+      <Head>
+        <title>Next.js Blog Example with {CMS_NAME}</title>
+      </Head>
+      <Homepage />
     </Layout>
   );
 };
 
-index.propTypes = {
-  banner: PropTypes.shape({
-    content: PropTypes.string,
-    buttonText: PropTypes.string,
-    buttonLink: PropTypes.string,
-    backgroundMedia: PropTypes.shape({
-      url: PropTypes.string,
-    }),
-  }).isRequired,
-  about: PropTypes.shape({
-    content: PropTypes.string,
-    buttonText: PropTypes.string,
-    buttonLink: PropTypes.string,
-    profilePicture: PropTypes.shape({
-      url: PropTypes.string,
-    }),
-  }).isRequired,
-};
+index.displayName = 'HomePage';
 
 export default index;
-
-export async function getStaticProps() {
-  const {
-    homePage: { home, aboutMe, counter, dynamicFields },
-  } = await getHomePage();
-
-  const { services, skills, portfolio, testimonial } = dynamicFields.reduce((p, c) => {
-    // eslint-disable-next-line no-underscore-dangle
-    switch (c.__typename) {
-      case 'ComponentHomePageServices':
-        return { ...p, services: c };
-      case 'ComponentHomePageSkills':
-        return { ...p, skills: c };
-      case 'ComponentHomePagePortfolio':
-        return { ...p, portfolio: c };
-      case 'ComponentHomePageTestimonial':
-        return { ...p, testimonial: c };
-
-      default:
-        return p;
-    }
-  }, {});
-
-  return {
-    props: {
-      home,
-      aboutMe,
-      counter,
-      services,
-      skills,
-      portfolio,
-      testimonial,
-    },
-  };
-}
