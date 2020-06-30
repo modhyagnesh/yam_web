@@ -1,40 +1,21 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-unescaped-entities */
-import Slider from 'react-slick';
+import ItemsCarousel from 'react-items-carousel';
+import { useState } from 'react';
+import useMedia from '@hooks/useMedia';
 
 const Testimonial = ({ data }) => {
-  const settings = {
-    dots: true,
-    infinite: true,
-    arrows: false,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 3,
-    initialSlide: 0,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
+  const [activeItemIndex, setActiveItemIndex] = useState(0);
+
+  const columnCount = useMedia(
+    // Media queries
+    ['(min-width: 1280px)', '(min-width: 1024px)', '(min-width: 768px)', '(min-width: 640px)'],
+    // Column counts (relates to above media queries by array index)
+    [3, 3, 2, 1],
+    // Default column count
+    1,
+  );
+
   return (
     <section className="section testimonial-section">
       <div className="container">
@@ -46,7 +27,13 @@ const Testimonial = ({ data }) => {
             </div>
           </div>
         </div>
-        <Slider {...settings}>
+        <ItemsCarousel
+          requestToChangeActive={setActiveItemIndex}
+          activeItemIndex={activeItemIndex}
+          numberOfCards={columnCount}
+          gutter={5}
+          infiniteLoop
+        >
           <For each="item" of={data.testimonialList}>
             <div className="testimonial-col" key={item.id}>
               <div className="img">
@@ -61,8 +48,8 @@ const Testimonial = ({ data }) => {
               <p>{item.testimonial}</p>
             </div>
           </For>
-          {/* col */}
-        </Slider>
+        </ItemsCarousel>
+        {/* col */}
       </div>
     </section>
   );

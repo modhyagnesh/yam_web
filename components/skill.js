@@ -11,10 +11,9 @@ const Skill = ({ data }) => {
     const onScroll = () => {
       const bounding = sectionRef.current.getBoundingClientRect();
       const progressbars = document.querySelectorAll('.progress .progress-bar');
-      if (
-        bounding.top >= 0 &&
-        bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight)
-      ) {
+      const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+
+      if (bounding.top >= 0 && bounding.bottom <= windowHeight) {
         progressbars.forEach((ele) => {
           const element = ele;
           const progressWidth = `${element.getAttribute('aria-valuenow')}%`;

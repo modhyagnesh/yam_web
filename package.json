@@ -26,6 +26,7 @@
     "react": "github:preact-compat/react#1.0.0",
     "react-bootstrap": "^1.0.1",
     "react-dom": "github:preact-compat/react-dom#1.0.0",
+    "react-items-carousel": "^2.8.0",
     "react-slick": "^0.26.1",
     "react-ssr-prepass": "npm:preact-ssr-prepass@^1.0.1",
     "react-transition-group": "^4.4.1",
