@@ -1,13 +1,18 @@
+/* eslint-disable react/no-danger */
 /* eslint-disable react/prop-types */
 import PropTypes from 'prop-types';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import './markdown.module.css';
 import useMarkdown from '@hooks/useMarkdown';
+import Skeleton from './banner.skeleton';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import './banner.module.css';
+import '../markdown.module.css';
 
 /* eslint-disable react/no-unescaped-entities */
 const Banner = ({ data }) => {
-  const { HTML } = useMarkdown(data.content);
+  console.log('Banner -> data', data);
+  const { HTML } = useMarkdown(data?.content);
 
+  if (!data) return <Skeleton />;
   return (
     <section
       id="home-box"

@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import './contact.module.css';
 
 const Contact = () => {
   return (

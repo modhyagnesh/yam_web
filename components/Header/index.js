@@ -1,4 +1,5 @@
 import { useRef, useEffect } from 'react';
+import './Header.module.css';
 
 const Header = () => {
   const navbarRef = useRef(null);
@@ -115,7 +116,7 @@ const Header = () => {
                 </a>
               </li>
               <li>
-                <a className="nav-link" href="#contact" onClick={navigate}>
+                <a className="m-btn m-btn-theme" href="#contact" onClick={navigate}>
                   Contact
                 </a>
               </li>

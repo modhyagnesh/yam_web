@@ -2,7 +2,12 @@ import { useEffect, useState, useCallback } from 'react';
 
 export default function useMedia(queries, values, defaultValue) {
   // Array containing a media query list for each query
-  const mediaQueryLists = queries.map((q) => window.matchMedia(q));
+  const mediaQueryLists = queries.map((q) => {
+    if (typeof window !== 'undefined') {
+      return window.matchMedia(q);
+    }
+    return '';
+  });
 
   const getValue = useCallback(() => {
     const index = mediaQueryLists.findIndex((mql) => mql.matches);
@@ -10,7 +15,7 @@ export default function useMedia(queries, values, defaultValue) {
     return typeof values[index] !== 'undefined' ? values[index] : defaultValue;
   }, [defaultValue, mediaQueryLists, values]);
 
-  // State and setter for matched value
+  // // State and setter for matched value
   const [value, setValue] = useState(getValue);
 
   useEffect(

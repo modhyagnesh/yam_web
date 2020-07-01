@@ -10,7 +10,9 @@ const useMarkdown = (markdown) => {
       const result = await remark().use(html).processSync(markdown);
       setHTML(result.toString());
     };
-    markdownToHtml();
+    if (markdown) {
+      markdownToHtml();
+    }
   }, [markdown]);
 
   return { HTML };

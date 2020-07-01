@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import './blog.module.css';
 
 const Blog = () => {
   return (

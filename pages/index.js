@@ -1,30 +1,22 @@
-import Head from 'next/head';
-import dynamic from 'next/dynamic';
-import { CMS_NAME } from '@constants';
 import Layout from '@components/layout';
+import Banner from '@components/Banner';
+import About from '@components/About';
+import Counter from '@components/Counter';
+import Services from '@components/Services';
+import Skill from '@components/Skill';
+import Portfolio from '@components/Portfolio';
+import Testimonial from '@components/Testimonial';
+import Blog from '@components/Blog';
+import Contact from '@components/Contact';
 
-import 'slick-carousel/slick/slick.css';
 import useHomePage from '../hooks/useHomePage';
 
-const Banner = dynamic(import('@components/banner'));
-const About = dynamic(import('@components/about'));
-const Counter = dynamic(import('@components/counter'));
-const Services = dynamic(import('@components/services'));
-const Skill = dynamic(import('@components/skill'));
-const Portfolio = dynamic(import('@components/portfolio'));
-const Testimonial = dynamic(import('@components/testimonial'));
-const Blog = dynamic(import('@components/blog'));
-const Contact = dynamic(import('@components/contact'));
-const Loading = dynamic(import('@components/Loading'));
-
-const Homepage = () => {
+const Index = () => {
   const { data, error } = useHomePage();
 
   if (error) return <div>failed to load</div>;
-  if (!data) return <Loading />;
 
-  const { home, aboutMe, counter, dynamicFields } = data;
-  const { services, skills, portfolio, testimonial } = dynamicFields.reduce((p, c) => {
+  const dynamicFields = (data?.dynamicFields || []).reduce((p, c) => {
     // eslint-disable-next-line no-underscore-dangle
     switch (c.__component) {
       case 'home-page.services':
@@ -42,46 +34,20 @@ const Homepage = () => {
   }, {});
 
   return (
-    <>
-      <If condition={!!home}>
-        <Banner data={home} />
-      </If>
-      <If condition={!!aboutMe}>
-        <About data={aboutMe} />
-      </If>
-      <If condition={!!counter}>
-        <Counter data={counter} />
-      </If>
-      <If condition={!!services}>
-        <Services data={services} />
-      </If>
-      <If condition={!!skills}>
-        <Skill data={skills} />
-      </If>
-      <If condition={!!portfolio}>
-        <Portfolio data={portfolio} />
-      </If>
-      <If condition={!!testimonial}>
-        <Testimonial data={testimonial} />
-      </If>
+    <Layout>
+      <Banner data={data?.home} />
+      <About data={data?.aboutMe} />
+      <Counter data={data?.counter} />
+      <Services data={dynamicFields?.services} />
+      <Skill data={dynamicFields?.skills} />
+      <Portfolio data={dynamicFields?.portfolio} />
+      <Testimonial data={dynamicFields?.testimonial} />
       <Blog />
       <Contact />
-    </>
-  );
-};
-
-// eslint-disable-next-line react/prop-types
-const index = () => {
-  return (
-    <Layout>
-      <Head>
-        <title>Next.js Blog Example with {CMS_NAME}</title>
-      </Head>
-      <Homepage />
     </Layout>
   );
 };
 
-index.displayName = 'HomePage';
+Index.displayName = 'HomePage';
 
-export default index;
+export default Index;
