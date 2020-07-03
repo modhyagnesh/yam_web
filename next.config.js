@@ -2,10 +2,17 @@
 const webpack = require('webpack');
 const withCSS = require('@zeit/next-css');
 const withPrefresh = require('@prefresh/next');
-const bundleAnalyzer = require('@next/bundle-analyzer');
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
 const withPlugins = require('next-compose-plugins');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const BrotliPlugin = require('brotli-webpack-plugin');
+// const withPWA = require('next-pwa')({
+//   pwa: {
+//     dest: 'public'
+//   }
+// })
 
 const nextConfig = {
   webpack: (config, { dev, isServer }) => {
@@ -66,7 +73,4 @@ const nextConfig = {
   },
 };
 
-module.exports = withPlugins(
-  [withPrefresh, withCSS, [bundleAnalyzer, { enabled: process.env.ANALYZE === 'true' }]],
-  nextConfig,
-);
+module.exports = withPlugins([withPrefresh, withCSS, withBundleAnalyzer], nextConfig);

@@ -1,14 +1,14 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-unescaped-entities */
-import ItemsCarousel from 'react-items-carousel';
+// import ItemsCarousel from 'react-items-carousel';
 import Skeleton from 'react-loading-skeleton';
-import { useState } from 'react';
+// import { useState } from 'react';
 import useMedia from '@hooks/useMedia';
 
 import './testimonial.module.css';
 
 const Testimonial = ({ data }) => {
-  const [activeItemIndex, setActiveItemIndex] = useState(0);
+  // const [activeItemIndex, setActiveItemIndex] = useState(0);
 
   const columnCount = useMedia(
     // Media queries
@@ -32,28 +32,28 @@ const Testimonial = ({ data }) => {
         </div>
         <Choose>
           <When condition={data?.testimonialList}>
-            <ItemsCarousel
+            {/* <ItemsCarousel
               requestToChangeActive={setActiveItemIndex}
               activeItemIndex={activeItemIndex}
               numberOfCards={columnCount}
               gutter={5}
               infiniteLoop
-            >
-              <For each="item" of={data.testimonialList}>
-                <div className="testimonial-col" key={item.id}>
-                  <div className="img">
-                    <img
-                      className="lazyload"
-                      data-src={item.avatar.url}
-                      alt="Yagnesh"
-                      title="Yagnesh"
-                    />
-                  </div>
-                  <h6>{item.name}</h6>
-                  <p>{item.testimonial}</p>
+            > */}
+            <For each="item" of={data.testimonialList}>
+              <div className="testimonial-col" key={item.id}>
+                <div className="img">
+                  <img
+                    className="lazyload"
+                    data-src={item.avatar.url}
+                    alt="Yagnesh"
+                    title="Yagnesh"
+                  />
                 </div>
-              </For>
-            </ItemsCarousel>
+                <h6>{item.name}</h6>
+                <p>{item.testimonial}</p>
+              </div>
+            </For>
+            {/* </ItemsCarousel> */}
           </When>
           <Otherwise>
             <div style={{ display: 'flex' }}>

@@ -9,7 +9,6 @@ import '../markdown.module.css';
 
 /* eslint-disable react/no-unescaped-entities */
 const Banner = ({ data }) => {
-  console.log('Banner -> data', data);
   const { HTML } = useMarkdown(data?.content);
 
   if (!data) return <Skeleton />;
