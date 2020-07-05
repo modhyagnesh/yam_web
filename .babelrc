@@ -1,6 +1,7 @@
 {
   "presets": ["next/babel"],
   "plugins": [
+    "inline-react-svg",
     "jsx-control-statements",
     [
       "module-resolver",

@@ -8,11 +8,11 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 const withPlugins = require('next-compose-plugins');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const BrotliPlugin = require('brotli-webpack-plugin');
-// const withPWA = require('next-pwa')({
-//   pwa: {
-//     dest: 'public'
-//   }
-// })
+const withPWA = require('next-pwa')({
+  pwa: {
+    dest: 'public',
+  },
+});
 
 const nextConfig = {
   webpack: (config, { dev, isServer }) => {
@@ -73,4 +73,4 @@ const nextConfig = {
   },
 };
 
-module.exports = withPlugins([withPrefresh, withCSS, withBundleAnalyzer], nextConfig);
+module.exports = withPlugins([withPrefresh, withPWA, withCSS, withBundleAnalyzer], nextConfig);

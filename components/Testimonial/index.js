@@ -1,10 +1,12 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-unescaped-entities */
 // import ItemsCarousel from 'react-items-carousel';
+import Slider from 'react-slick';
 import Skeleton from 'react-loading-skeleton';
 // import { useState } from 'react';
 import useMedia from '@hooks/useMedia';
 
+import 'slick-carousel/slick/slick.css';
 import './testimonial.module.css';
 
 const Testimonial = ({ data }) => {
@@ -18,6 +20,45 @@ const Testimonial = ({ data }) => {
     // Default column count
     1,
   );
+
+  // eslint-disable-next-line jsx-a11y/control-has-associated-label
+  const customPaging = () => <button type="button" />;
+
+  const settings = {
+    dots: true,
+    arrows: false,
+    infinite: false,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    customPaging,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
 
   return (
     <section className="section testimonial-section">
@@ -39,20 +80,22 @@ const Testimonial = ({ data }) => {
               gutter={5}
               infiniteLoop
             > */}
-            <For each="item" of={data.testimonialList}>
-              <div className="testimonial-col" key={item.id}>
-                <div className="img">
-                  <img
-                    className="lazyload"
-                    data-src={item.avatar.url}
-                    alt="Yagnesh"
-                    title="Yagnesh"
-                  />
+            <Slider {...settings}>
+              <For each="item" of={data.testimonialList}>
+                <div className="testimonial-col" key={item.id}>
+                  <div className="img">
+                    <img
+                      className="lazyload"
+                      data-src={item.avatar.url}
+                      alt="Yagnesh"
+                      title="Yagnesh"
+                    />
+                  </div>
+                  <h6>{item.name}</h6>
+                  <p>{item.testimonial}</p>
                 </div>
-                <h6>{item.name}</h6>
-                <p>{item.testimonial}</p>
-              </div>
-            </For>
+              </For>
+            </Slider>
             {/* </ItemsCarousel> */}
           </When>
           <Otherwise>

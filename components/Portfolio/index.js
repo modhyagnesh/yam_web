@@ -3,11 +3,12 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { useState } from 'react';
 import Skeleton from 'react-loading-skeleton';
-import { CSSTransition } from 'react-transition-group';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames';
 import { decamelize } from '@utils';
-
+import LinkIcon from '@public/icons/link.svg';
+import FullscreenIcon from '@public/icons/fullscreen.svg';
+import PlayIcon from '@public/icons/play_arrow.svg';
 import './portfolio.module.css';
 
 const Portfolio = ({ data }) => {
@@ -62,53 +63,47 @@ const Portfolio = ({ data }) => {
         <ul className="portfolio-cols portfolio-cols-3">
           <Choose>
             <When condition={data?.portfolioList}>
-              <For each="item" of={data.portfolioList}>
-                <CSSTransition
-                  in={category === item.category || category === ''}
-                  timeout={300}
-                  classNames="fade"
-                  unmountOnExit
-                >
-                  <li className={classNames('portfolio-item', item.category)} key={item.id}>
-                    <div className="portfolio-col portfolio-hover-01">
-                      <div className="portfolio-img">
-                        <a href="#" aria-label="portfolio Images">
-                          <img
-                            className="lazyload"
-                            data-src={item.portfolioImages[0].url}
-                            title="portfolio Images"
-                            alt="portfolio"
-                          />
-                        </a>
-                        <div className="hover">
-                          <div className="action-btn">
-                            <a href={item.videoLink} className="popup-video theme-color">
-                              {/* <FontAwesomeIcon icon="play" /> */}
-                            </a>
-                            <a
-                              className="lightbox-gallery theme-color"
-                              href={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${item.portfolioImages[0].url}`}
-                              title="Lightbox gallery image title..."
-                            >
-                              {/* <FontAwesomeIcon icon="expand" /> */}
-                            </a>
-                            <a href={item.portfolioLink} className="theme-color">
-                              {/* <FontAwesomeIcon icon="link" /> */}
-                            </a>
-                          </div>
-                          {/* Video Btn */}
+              <For
+                each="item"
+                of={data.portfolioList.filter((x) => category === x.category || category === '')}
+              >
+                <li className={classNames('portfolio-item', item.category)} key={item.id}>
+                  <div className="portfolio-col portfolio-hover-01">
+                    <div className="portfolio-img">
+                      <img
+                        className="lazyload"
+                        data-src={item.portfolioImages[0].url}
+                        title="portfolio Images"
+                        alt="portfolio"
+                      />
+                      <div className="hover">
+                        <div className="action-btn">
+                          <a href={item.videoLink} className="popup-video theme-color">
+                            <PlayIcon fill="#fff" />
+                          </a>
+                          <a
+                            className="lightbox-gallery theme-color"
+                            href={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${item.portfolioImages[0].url}`}
+                            title="Lightbox gallery image title..."
+                          >
+                            <FullscreenIcon fill="#fff" />
+                          </a>
+                          <a href={item.portfolioLink} className="theme-color">
+                            <LinkIcon fill="#fff" />
+                          </a>
                         </div>
-                        {/* Hover */}
+                        {/* Video Btn */}
                       </div>
-
-                      <div className="portfolio-info">
-                        <h5>{item.title}</h5>
-                        <span>{item.description}</span>
-                      </div>
+                      {/* Hover */}
                     </div>
-                    {/* Portfolio */}
-                  </li>
-                </CSSTransition>
+
+                    <div className="portfolio-info">
+                      <h5>{item.title}</h5>
+                      <span>{item.description}</span>
+                    </div>
+                  </div>
+                  {/* Portfolio */}
+                </li>
               </For>
             </When>
             <Otherwise>

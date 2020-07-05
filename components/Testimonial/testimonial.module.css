@@ -1,11 +1,34 @@
 /*-----------------------------------------
 *  Testimonial
 -----------------------------------------*/
+.slick-slide {
+	padding: 0 8px;
+	box-sizing: border-box;
+ }
+
+ul.slick-dots {
+  text-align: center;
+}
+ul.slick-dots li {
+  display: inline-block;
+  margin: 0 3px;
+}
+
+ul.slick-dots button {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: transparent;
+  border: 2px solid #484848;
+  box-shadow: 0px 1px 27px -3px rgba(0, 0, 0, 0.2);
+}
+
+
 .testimonial-col { 
     padding: 60px 30px 30px;
     background: #fff;
     position: relative;
-    margin: 50px 10px 20px 10px;
+    margin: 50px 0px 20px;
     box-shadow: 0px 1px 27px -3px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
     text-align: center;
