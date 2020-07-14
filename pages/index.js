@@ -18,16 +18,16 @@ const Index = () => {
 
   if (error) return <div>failed to load</div>;
 
-  const dynamicFields = (data?.dynamicFields || []).reduce((p, c) => {
+  const dynamicFields = (data?.homePage.dynamicFields || []).reduce((p, c) => {
     // eslint-disable-next-line no-underscore-dangle
-    switch (c.__component) {
-      case 'home-page.services':
+    switch (c.__typename) {
+      case 'ComponentHomePageServices':
         return { ...p, services: c };
-      case 'home-page.skills':
+      case 'ComponentHomePageSkills':
         return { ...p, skills: c };
-      case 'home-page.portfolio':
+      case 'ComponentHomePagePortfolio':
         return { ...p, portfolio: c };
-      case 'home-page.testimonial':
+      case 'ComponentHomePageTestimonial':
         return { ...p, testimonial: c };
 
       default:
@@ -36,19 +36,19 @@ const Index = () => {
   }, {});
 
   return (
-    <Layout>
+    <Layout footerStyle={{ marginTop: 0 }}>
       <Head>
         <title>Next.js Blog Example with {CMS_NAME}</title>
       </Head>
-      <Banner data={data?.home} />
-      <About data={data?.aboutMe} />
-      <Counter data={data?.counter} />
+      <Banner data={data?.homePage.home} />
+      <About data={data?.homePage.aboutMe} />
+      <Counter data={data?.homePage.counter} />
       <Services data={dynamicFields?.services} />
       <Skill data={dynamicFields?.skills} />
       <Portfolio data={dynamicFields?.portfolio} />
       <Testimonial data={dynamicFields?.testimonial} />
-      <Blog />
-      <Contact />
+      <Blog data={data?.homePage.blog} />
+      {/* <Contact data={data?.homePage.ContactMe} /> */}
     </Layout>
   );
 };

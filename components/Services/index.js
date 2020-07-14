@@ -1,11 +1,14 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/anchor-is-valid */
+import { useState } from 'react';
 import Skeleton from 'react-loading-skeleton';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Modal from '../Modal/index';
 
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './services.module.css';
 // eslint-disable-next-line no-unused-vars
 const Services = ({ data }) => {
+  const [modalContent, setModalContent] = useState(null);
   return (
     <section id="services" className="section gray-bg services-section">
       <div className="container">
@@ -17,15 +20,34 @@ const Services = ({ data }) => {
             </div>
           </div>
         </div>
+
+        <If condition={!!modalContent}>
+          <Modal open={!!modalContent} onClose={() => setModalContent(null)}>
+            <div className="feature-box-02" style={{ margin: 0 }}>
+              <span className="icon theme-bg">
+                <FontAwesomeIcon icon={modalContent.icon} />
+              </span>
+              <div>
+                <h5>{modalContent.title}</h5>
+                <p>{modalContent.description}</p>
+              </div>
+            </div>
+          </Modal>
+        </If>
         {/* row */}
         <div className="row">
           <Choose>
             <When condition={data}>
               <For each="item" of={data.servicesList}>
-                <div className="col-12 col-md-6 col-lg-4" key={item.id}>
+                <div
+                  className="col-12 col-md-6 col-lg-4"
+                  key={item.id}
+                  role="button"
+                  onClick={() => setModalContent(item)}
+                >
                   <div className="feature-box-02">
                     <span className="icon theme-bg">
-                      {/* <FontAwesomeIcon icon={item.icon.split('_')} /> */}
+                      <FontAwesomeIcon icon={item.icon} />
                     </span>
                     <div>
                       <h5>{item.title}</h5>
@@ -33,7 +55,7 @@ const Services = ({ data }) => {
                       <div className="read-more">
                         <a href="#" className="more-btn">
                           Read More
-                          {/* <FontAwesomeIcon icon="arrow-right" /> */}
+                          <FontAwesomeIcon icon="arrow-right" />
                         </a>
                       </div>
                     </div>

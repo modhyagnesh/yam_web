@@ -1,20 +1,16 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Skeleton from 'react-loading-skeleton';
 import './contact.module.css';
 
-const Contact = () => {
+const Contact = ({ data }) => {
   return (
     <section id="contact" className="section p-0px-b contact-section">
       <div className="container">
         <div className="row justify-content-center m-60px-b md-m-40px-b">
           <div className="col-12 col-md-10 col-lg-7">
             <div className="section-title text-center">
-              <h2 className="font-alt">Contact Us</h2>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                exercitation ullamco laboris nisi{' '}
-              </p>
+              <h2 className="font-alt">{data?.title ?? <Skeleton width={150} />}</h2>
+              <p>{data?.description ?? <Skeleton height={16} width="100%" count={2} />}</p>
             </div>
           </div>
         </div>
@@ -33,8 +29,9 @@ const Contact = () => {
                     {/* <FontAwesomeIcon icon="directions" /> */}
                   </span>
                   <p>
-                    301 The Greenhouse,
-                    <br /> London, E2 8DY.
+                    {`${data?.address?.addressLine1}
+                    ${data?.address?.addressLine2}
+                    ${data?.address?.city},${data?.address?.state} ${data?.address?.zipcode}`}
                   </p>
                 </div>
 
@@ -64,9 +61,6 @@ const Contact = () => {
                 <h2>Say Something</h2>
                 <form>
                   <div className="form-group">
-                    <label htmlFor="phone" className="hidden">
-                      Phone
-                    </label>
                     <input
                       id="phone"
                       name="Phone"
@@ -76,9 +70,6 @@ const Contact = () => {
                     />
                   </div>
                   <div className="form-group">
-                    <label htmlFor="email" className="hidden">
-                      Email
-                    </label>
                     <input
                       name="Email"
                       id="email"
@@ -88,9 +79,6 @@ const Contact = () => {
                     />
                   </div>
                   <div className="form-group">
-                    <label htmlFor="subject" className="hidden">
-                      Subject
-                    </label>
                     <input
                       name="Subject"
                       id="subject"
@@ -100,9 +88,6 @@ const Contact = () => {
                     />
                   </div>
                   <div className="form-group">
-                    <label htmlFor="comment" className="hidden">
-                      Comment
-                    </label>
                     <textarea
                       name="comment"
                       id="comment"

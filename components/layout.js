@@ -5,13 +5,13 @@ import Meta from './meta';
 import Header from './Header';
 import Footer from './Footer';
 
-const Layout = ({ children }) => {
+const Layout = ({ children, footerStyle }) => {
   return (
     <>
       <Meta />
       <Header />
       <main>{children}</main>
-      <Footer />
+      <Footer footerStyle={footerStyle} />
     </>
   );
 };

@@ -23,7 +23,7 @@ const Posts = () => {
         <div className="container">
           <div className="row">
             {/* Content area */}
-            <div className="col-12 col-md-12 col-lg-9 p-50px-r md-p-15px-r">
+            <div className="col-12 p-50px-r md-p-15px-r">
               <div className="bog-content-area">
                 <div className="m-30px-b">
                   <img className="lazyload" data-src="static/img/overlay-1.png" title="" alt="" />
@@ -124,7 +124,7 @@ const Posts = () => {
                   </div>
                 </div>
               </div>
-              <div className="blog-comment-area">
+              {/* <div className="blog-comment-area">
                 <h2 className="title-style-1 font-alt">Commets 3</h2>
                 <ul className="blog-comment">
                   <li>
@@ -137,7 +137,6 @@ const Posts = () => {
                           alt=""
                         />
                       </div>
-                      {/* col */}
                       <div className="col-lg-10 col-md-9">
                         <a href="#" className="person">
                           Martin Luthar
@@ -154,8 +153,6 @@ const Posts = () => {
                         </p>
                       </div>
                     </div>
-                    {/* row */}
-                    {/* Child Comment */}
                     <ul className="child-comment">
                       <li>
                         <div className="row">
@@ -167,7 +164,6 @@ const Posts = () => {
                               alt=""
                             />
                           </div>
-                          {/* col */}
                           <div className="col-lg-10 col-md-9">
                             <a href="#" className="person">
                               Martin Luthar
@@ -184,11 +180,8 @@ const Posts = () => {
                             </p>
                           </div>
                         </div>
-                        {/* row */}
                       </li>
                     </ul>
-                    {/* Blog Comment */}
-                    {/* / */}
                   </li>
 
                   <li>
@@ -201,7 +194,6 @@ const Posts = () => {
                           alt=""
                         />
                       </div>
-                      {/* col */}
                       <div className="col-lg-10 col-md-9">
                         <a href="#" className="person">
                           Martin Luthar
@@ -218,11 +210,10 @@ const Posts = () => {
                         </p>
                       </div>
                     </div>
-                    {/* row */}
                   </li>
                 </ul>
-              </div>
-              <div className="blog-comment-form">
+              </div> */}
+              {/* <div className="blog-comment-form">
                 <h2 className="title-style-1 font-alt">Leave a Reply</h2>
                 <form>
                   <div className="row">
@@ -265,11 +256,11 @@ const Posts = () => {
                     </div>
                   </div>
                 </form>
-              </div>
+              </div> */}
             </div>
             {/* col */}
             {/* side Bar */}
-            <div className="col-12 col-md-12 col-lg-3 md-m-30px-b">
+            {/* <div className="col-12 col-md-12 col-lg-3 md-m-30px-b">
               <div className="sidebar-widget">
                 <h5 className="widget-title font-alt">SEARCH</h5>
                 <div className="widget-search">
@@ -281,7 +272,6 @@ const Posts = () => {
                   </form>
                 </div>
               </div>
-              {/* /sidebar-widget */}
               <div className="sidebar-widget">
                 <h5 className="widget-title font-alt">ABOUT ME</h5>
                 <div className="widget-about">
@@ -293,7 +283,6 @@ const Posts = () => {
                   </p>
                 </div>
               </div>
-              {/* /sidebar-widget */}
               <div className="sidebar-widget">
                 <h5 className="widget-title font-alt">CATEGORIES</h5>
                 <div className="widget-categories">
@@ -322,7 +311,6 @@ const Posts = () => {
                   </ul>
                 </div>
               </div>
-              {/* /sidebar-widget */}
               <div className="sidebar-widget">
                 <h5 className="widget-title font-alt">POPULAR POST</h5>
                 <div className="widget-categories">
@@ -384,7 +372,6 @@ const Posts = () => {
                   </ul>
                 </div>
               </div>
-              {/* /sidebar-widget */}
               <div className="sidebar-widget">
                 <h5 className="widget-title font-alt">ARCHIVE</h5>
                 <div className="widget-archive">
@@ -407,7 +394,6 @@ const Posts = () => {
                   </ul>
                 </div>
               </div>
-              {/* /sidebar-widget */}
               <div className="sidebar-widget">
                 <h5 className="widget-title font-alt">POPULAR TAGS</h5>
                 <div className="widget-popular-tag">
@@ -451,7 +437,6 @@ const Posts = () => {
                   </ul>
                 </div>
               </div>
-              {/* /sidebar-widget */}
               <div className="sidebar-widget">
                 <h5 className="widget-title font-alt">NEWSLETTER</h5>
                 <div className="widget-newsletter">
@@ -469,13 +454,9 @@ const Posts = () => {
                   </form>
                 </div>
               </div>
-              {/* /sidebar-widget */}
-            </div>
-            {/* col */}
+            </div> */}
           </div>
-          {/* row */}
         </div>
-        {/* container */}
       </section>
     </Layout>
   );

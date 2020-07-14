@@ -2,56 +2,16 @@
 *  Skill Left
 -----------------------------------------*/
 .skill-left h3 {
-    color: #151515;
-    font-weight: 600;
+  color: #151515;
+  font-weight: 600;
+  margin: 0 0 20px;
+  font-size: 22px;
+}
+
+@media (max-width: 767px) {
+  .skill-left h3 {
     margin: 0 0 20px;
     font-size: 22px;
+    line-height: 34px;
   }
-  
-  @media (max-width: 767px){ 
-    .skill-left h3{
-      margin: 0 0 20px;  
-      font-size: 22px;
-      line-height: 34px;
-    }
-    
-  }
-  
-  
-  .progress-lt {
-    margin-top: 25px;
-    position: relative;
-  }
-  .progress-lt:first-child {
-    margin-top: 0;
-  }
-  .progress-lt > h6 {
-    display: inline-block;
-    width: 47%;
-    margin-right: 1.5%;
-    color: #222;
-    margin: 0;
-    padding: 0 0 6px;
-    font-size: 12px;
-    font-weight: 500;
-    text-transform: uppercase;
-  }
-  .progress-lt > span {
-    position: absolute;
-    top: 0;
-    right: 1.5%;
-    font-size: 12px;
-  }
-  .progress-lt .progress {
-    margin-bottom: 0;
-    height: 6px;
-    border-radius: 50px;
-  }
-  .progress-lt .progress-bar {
-    width: 0%;
-    -webkit-transition: width 1.2s ease;
-       -moz-transition: width 1.2s ease;  
-         -o-transition: width 1.2s ease;  
-            transition: width 1.2s ease;
-  }
-  
+}

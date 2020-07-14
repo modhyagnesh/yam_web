@@ -3,16 +3,14 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { useState } from 'react';
 import Skeleton from 'react-loading-skeleton';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import classNames from 'classnames';
-import { decamelize } from '@utils';
-import LinkIcon from '@public/icons/link.svg';
-import FullscreenIcon from '@public/icons/fullscreen.svg';
-import PlayIcon from '@public/icons/play_arrow.svg';
-import './portfolio.module.css';
+import Carousel from 'react-bootstrap/Carousel';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Modal from '../Modal/index';
+import PortfolioList from '../PortfolioList';
 
 const Portfolio = ({ data }) => {
-  const [category, setCategory] = useState('');
+  console.log(data?.projects);
+  const [modalContent, setModalContent] = useState(null);
 
   return (
     <section id="portfolio" className="section gray-bg">
@@ -25,115 +23,67 @@ const Portfolio = ({ data }) => {
             </div>
           </div>
         </div>
-        <div className="portfolio-filter m-30px-b">
-          <Choose>
-            <When condition={data?.portfolioList}>
-              <ul className="filter text-center">
-                <li
-                  className={classNames({ active: category === '' })}
-                  data-filter="*"
-                  onClick={() => setCategory('')}
-                  onKeyPress={() => setCategory('')}
-                >
-                  All
-                </li>
-                <For each="item" of={[...new Set(data.portfolioList.map((x) => x.category))]}>
-                  <li
-                    className={classNames({ active: category === item })}
-                    data-filter={`.${item}`}
-                    onClick={() => setCategory(item)}
-                    onKeyPress={() => setCategory(item)}
-                    key={item}
-                  >
-                    {decamelize(item)}
-                  </li>
-                </For>
-              </ul>
-            </When>
-            <Otherwise>
-              <div className="text-center">
-                <For each="item" of={[...Array(3).keys()]}>
-                  <Skeleton height={38} width={60} style={{ borderRadius: 30, margin: '0 10px' }} />
-                </For>
-              </div>
-            </Otherwise>
-          </Choose>
-        </div>
+
         {/* Portfolio Filter */}
-        <ul className="portfolio-cols portfolio-cols-3">
-          <Choose>
-            <When condition={data?.portfolioList}>
-              <For
-                each="item"
-                of={data.portfolioList.filter((x) => category === x.category || category === '')}
-              >
-                <li className={classNames('portfolio-item', item.category)} key={item.id}>
-                  <div className="portfolio-col portfolio-hover-01">
-                    <div className="portfolio-img">
-                      <img
-                        className="lazyload"
-                        data-src={item.portfolioImages[0].url}
-                        title="portfolio Images"
-                        alt="portfolio"
-                      />
-                      <div className="hover">
-                        <div className="action-btn">
-                          <a href={item.videoLink} className="popup-video theme-color">
-                            <PlayIcon fill="#fff" />
-                          </a>
-                          <a
-                            className="lightbox-gallery theme-color"
-                            href={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${item.portfolioImages[0].url}`}
-                            title="Lightbox gallery image title..."
-                          >
-                            <FullscreenIcon fill="#fff" />
-                          </a>
-                          <a href={item.portfolioLink} className="theme-color">
-                            <LinkIcon fill="#fff" />
-                          </a>
-                        </div>
-                        {/* Video Btn */}
-                      </div>
-                      {/* Hover */}
-                    </div>
+        <PortfolioList data={data} />
 
-                    <div className="portfolio-info">
-                      <h5>{item.title}</h5>
-                      <span>{item.description}</span>
-                    </div>
-                  </div>
-                  {/* Portfolio */}
-                </li>
-              </For>
-            </When>
-            <Otherwise>
-              <For each="item" of={[...Array(6).keys()]}>
-                <li className={classNames('portfolio-item', item.category)} key={item.id}>
-                  <div className="portfolio-col portfolio-hover-01">
-                    <div className="portfolio-img">
-                      {/*  eslint-disable-next-line no-script-url */}
-                      <a href="javascript:void(0)" aria-label="portfolio Images">
-                        <Skeleton height={250} width="100%" />
-                      </a>
-                      {/* Hover */}
-                    </div>
+        <div className="d-flex justify-content-center m-50px-t md-m-25px-t">
+          <a className="m-btn m-btn-theme" href="">
+            View More Projects
+            {/* <FontAwesomeIcon icon="arrow-right" /> */}
+          </a>
+        </div>
 
-                    <div className="portfolio-info">
-                      <h5>
-                        <Skeleton height={24} width="70%" />
-                      </h5>
-                      <span>
-                        <Skeleton height={16} width="40%" />
-                      </span>
-                    </div>
-                  </div>
-                  {/* Portfolio */}
-                </li>
+        <If condition={!!modalContent}>
+          <Modal open={!!modalContent} onClose={() => setModalContent(null)}>
+            <Carousel
+              indicators={false}
+              nextIcon={
+                <span
+                  style={{
+                    display: 'flex',
+                    backgroundColor: 'rgba(0,0,0,0.4)',
+                    width: 32,
+                    height: 32,
+                    borderRadius: 16,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    lineHeight: 0,
+                  }}
+                >
+                  <FontAwesomeIcon icon="chevron-right" color="#fff" fixedWidth />
+                </span>
+              }
+              prevIcon={
+                <span
+                  style={{
+                    display: 'flex',
+                    backgroundColor: 'rgba(0,0,0,0.4)',
+                    width: 32,
+                    height: 32,
+                    borderRadius: 16,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    lineHeight: 0,
+                  }}
+                >
+                  <FontAwesomeIcon icon="chevron-left" color="#fff" fixedWidth />
+                </span>
+              }
+            >
+              <For each="item" of={modalContent || []}>
+                <Carousel.Item>
+                  <img
+                    className="d-block w-100"
+                    src={item.url.replace('upload/', 'upload/c_fill/c_scale,w_auto,dpr_auto/')}
+                    title="Yagnesh"
+                    alt="Yagnesh"
+                  />
+                </Carousel.Item>
               </For>
-            </Otherwise>
-          </Choose>
-          {/* col */}
-        </ul>
+            </Carousel>
+          </Modal>
+        </If>
         {/* row */}
         {/* portfolio content */}
       </div>

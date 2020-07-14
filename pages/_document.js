@@ -13,6 +13,7 @@ export default class MyDocument extends Document {
 
         <body data-spy="scroll" data-target="#navbarYagnesh" data-offset="98">
           <Main />
+          <div id="modal" />
           <NextScript />
           {/* <script
             dangerouslySetInnerHTML={{

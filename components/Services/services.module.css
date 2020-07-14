@@ -44,6 +44,11 @@
   
   .feature-box-02 p {
     margin: 0 0 25px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+    height: 72px;
   }
   
   @media (max-width: 991px){

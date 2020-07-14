@@ -2,40 +2,14 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import Skeleton from 'react-loading-skeleton';
+import ProgressBar from '../ProgressBar/index';
 
-import { useEffect, useRef } from 'react';
 import './skill.module.css';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Skill = ({ data }) => {
-  const sectionRef = useRef(null);
-  useEffect(() => {
-    const onScroll = () => {
-      const bounding = sectionRef.current.getBoundingClientRect();
-      const progressbars = document.querySelectorAll('.progress .progress-bar');
-      const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-
-      if (bounding.top >= 0 && bounding.bottom <= windowHeight) {
-        progressbars.forEach((ele) => {
-          const element = ele;
-          const progressWidth = `${element.getAttribute('aria-valuenow')}%`;
-          element.style.width = progressWidth;
-        });
-      } else {
-        progressbars.forEach((ele) => {
-          const element = ele;
-          element.style.width = 0;
-        });
-      }
-    };
-    document.addEventListener('scroll', onScroll, false);
-    return () => {
-      document.removeEventListener('scroll', onScroll, false);
-    };
-  }, []);
-
   return (
-    <section id="skill" className="section skill-section" ref={sectionRef}>
+    <section id="skill" className="section skill-section">
       <div className="container">
         <div className="row">
           <div className="col-md-6">
@@ -58,23 +32,9 @@ const Skill = ({ data }) => {
           <div className="col-md-6">
             <div className="skills p-t-10px-sm">
               <Choose>
-                <When condition={data?.skillList}>
-                  <For each="item" of={data.skillList}>
-                    <div className="progress-lt" key={item.id}>
-                      <h6>{item.skillName}</h6>
-                      <span>{`${item.experty}%`}</span>
-                      <div className="progress">
-                        <div
-                          className="progress-bar theme-g-bg"
-                          role="progressbar"
-                          aria-valuenow={item.experty}
-                          aria-valuemin="0"
-                          aria-valuemax="100"
-                        />
-                        {/* /progress-bar */}
-                      </div>
-                      {/* /progress */}
-                    </div>
+                <When condition={data?.skills}>
+                  <For each="item" of={data.skills}>
+                    <ProgressBar item={item} />
                   </For>
                 </When>
                 <Otherwise>

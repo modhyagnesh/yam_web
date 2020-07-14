@@ -3,11 +3,11 @@ import Head from 'next/head';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Layout from '@components/layout';
 import { CMS_NAME } from '@constants';
-import useBlog from '../hooks/useBlog';
-import BlogList from '../components/BlogList';
+import usePortfolio from '../hooks/usePortfolio';
+import PortfolioList from '../components/PortfolioList';
 
-const posts = () => {
-  const { data, error } = useBlog();
+const Portfolio = () => {
+  const { data, error } = usePortfolio();
 
   if (error) return <div>failed to load</div>;
   return (
@@ -17,16 +17,16 @@ const posts = () => {
       </Head>
       <section className="page-title" style={{ backgroundColor: 'black' }}>
         <div className="container">
-          <h1 className="font-alt">Blog List</h1>
+          <h1 className="font-alt">Portfolio List</h1>
         </div>
         {/* container */}
       </section>
 
       <section className="section blog-lising">
         <div className="container">
-          <If condition={!!data}>
-            <BlogList data={data} />
-          </If>
+          <div className="row">
+            <PortfolioList data={data} />
+          </div>
 
           <div className="bottom-pagination">
             <ul className="pagination justify-content-center">
@@ -63,4 +63,4 @@ const posts = () => {
   );
 };
 
-export default posts;
+export default Portfolio;
