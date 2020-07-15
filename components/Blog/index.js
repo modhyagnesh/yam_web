@@ -1,5 +1,6 @@
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Skeleton from 'react-loading-skeleton';
 import BlogList from '../BlogList';
 
@@ -24,7 +25,7 @@ const Blog = ({ data }) => {
           <Link href="/posts">
             <a className="m-btn m-btn-theme">
               View More Posts
-              {/* <FontAwesomeIcon icon="arrow-right" /> */}
+              <FontAwesomeIcon icon="arrow-right" />
             </a>
           </Link>
         </div>

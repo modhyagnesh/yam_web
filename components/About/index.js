@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useMarkdown from '@hooks/useMarkdown';
 import Skeleton from 'react-loading-skeleton';
 import './about.module.css';
@@ -44,7 +44,7 @@ const About = ({ data }) => {
                   <Link href={data.buttonLink}>
                     <a className="m-btn m-btn-theme" aria-label={data.buttonText}>
                       {data.buttonText}
-                      {/* <FontAwesomeIcon icon="arrow-right" /> */}
+                      <FontAwesomeIcon icon="arrow-right" />
                     </a>
                   </Link>
                 </When>

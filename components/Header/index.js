@@ -23,8 +23,8 @@ const Header = ({ whiteHeader }) => {
     };
   }, []);
 
-  const toggleNavbar = (e) => {
-    e.preventDefault();
+  const toggleNavbar = () => {
+    // e.preventDefault();
     const visible = collapseRef.current.classList.contains('show');
     if (visible) {
       if (window.scrollY <= 60) {
@@ -75,7 +75,12 @@ const Header = ({ whiteHeader }) => {
             <ul className="navbar-nav">
               <li>
                 <Link href="/">
-                  <a className={classNames('nav-link', { active: pathname === '/' })}>Home</a>
+                  <a
+                    className={classNames('nav-link', { active: pathname === '/' })}
+                    onClick={toggleNavbar}
+                  >
+                    Home
+                  </a>
                 </Link>
               </li>
               {/* <li>
@@ -85,26 +90,40 @@ const Header = ({ whiteHeader }) => {
               </li> */}
               <li>
                 <Link href="/resume">
-                  <a className={classNames('nav-link', { active: pathname === '/resume' })}>
+                  <a
+                    className={classNames('nav-link', { active: pathname === '/resume' })}
+                    onClick={toggleNavbar}
+                  >
                     Resume
                   </a>
                 </Link>
               </li>
               <li>
                 <Link href="/projects">
-                  <a className={classNames('nav-link', { active: pathname === '/projects' })}>
+                  <a
+                    className={classNames('nav-link', { active: pathname === '/projects' })}
+                    onClick={toggleNavbar}
+                  >
                     Projects
                   </a>
                 </Link>
               </li>
               <li>
                 <Link href="/posts">
-                  <a className={classNames('nav-link', { active: pathname === '/posts' })}>Blog</a>
+                  <a
+                    className={classNames('nav-link', { active: pathname === '/posts' })}
+                    onClick={toggleNavbar}
+                  >
+                    Blog
+                  </a>
                 </Link>
               </li>
               <li>
                 <Link href="/contact">
-                  <a className={classNames('nav-link', { active: pathname === '/contact' })}>
+                  <a
+                    className={classNames('nav-link', { active: pathname === '/contact' })}
+                    onClick={toggleNavbar}
+                  >
                     Contact
                   </a>
                 </Link>

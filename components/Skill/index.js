@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Skeleton from 'react-loading-skeleton';
 import ProgressBar from '../ProgressBar/index';
 
@@ -19,7 +20,7 @@ const Skill = ({ data }) => {
                   <Link href={data.buttonLink}>
                     <a className="m-btn m-btn-theme">
                       {data.buttonText}
-                      {/* <FontAwesomeIcon icon="arrow-right" /> */}
+                      <FontAwesomeIcon icon="arrow-right" />
                     </a>
                   </Link>
                 </When>

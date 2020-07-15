@@ -1,8 +1,8 @@
 import Link from 'next/link';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
 import Skeleton from 'react-loading-skeleton';
 import Carousel from 'react-bootstrap/Carousel';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Modal from '../Modal/index';
 import PortfolioList from '../PortfolioList';
 
@@ -29,7 +29,7 @@ const Portfolio = ({ data }) => {
           <Link href="/projects">
             <a className="m-btn m-btn-theme">
               View More Projects
-              {/* <FontAwesomeIcon icon="arrow-right" /> */}
+              <FontAwesomeIcon icon="arrow-right" />
             </a>
           </Link>
         </div>

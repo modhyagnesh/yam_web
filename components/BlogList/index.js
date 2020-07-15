@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames';
 import './blogList.module.css';
 
@@ -34,7 +35,7 @@ const BlogList = ({ data }) => {
               <div className="post-meta">
                 By
                 <a href="#" aria-label="name">
-                  John Doe
+                  Yagnesh Modh
                 </a>
                 <span>03.02.2018</span>
               </div>
@@ -50,7 +51,7 @@ const BlogList = ({ data }) => {
               <Link href="/post/[id]" as={`/post/${item.id}`}>
                 <a className="more-btn" aria-label="Read More">
                   Read More
-                  {/* <FontAwesomeIcon icon="arrow-right" /> */}
+                  <FontAwesomeIcon icon="arrow-right" className="arrowRight" />
                 </a>
               </Link>
             </div>

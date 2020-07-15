@@ -84,6 +84,10 @@ ul.slick-dots li.slick-active > button,
   transition: opacity 300ms, transform 300ms;
 }
 
+.fa-arrow-right {
+  margin-left: 8px;
+}
+
 
 /*----------------------------------
 Table of contents
@@ -311,7 +315,7 @@ img {
        -o-transition: ease all 0.4s;
           transition: ease all 0.4s;
 }
-.more-btn i {
+.more-btn .arrowRight {
   position: absolute;
   right: 0;
   top: 5px;
@@ -324,7 +328,7 @@ img {
 .more-btn:hover {
   color: #000;
 }
-.more-btn:hover i {
+.more-btn:hover .arrowRight {
   right: -20px;
   opacity: 1;
 }

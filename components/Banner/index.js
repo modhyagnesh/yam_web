@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useMarkdown from '@hooks/useMarkdown';
 import Skeleton from './banner.skeleton';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './banner.module.css';
 import '../markdown.module.css';
 
@@ -33,7 +33,7 @@ const Banner = ({ data }) => {
                     aria-label={data.buttonText}
                   >
                     {data.buttonText}
-                    {/* <FontAwesomeIcon icon="arrow-right" /> */}
+                    <FontAwesomeIcon icon="arrow-right" />
                   </a>
                 </div>
               </If>
