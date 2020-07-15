@@ -1,7 +1,5 @@
 import useSWR from 'swr';
 
-import fetch from '@lib/fetch';
-
 const usePortfolio = () => {
   const query = `
   {
@@ -28,7 +26,7 @@ const usePortfolio = () => {
     url
   }
   `;
-  return useSWR([query], fetch);
+  return useSWR([query]);
 };
 
 export default usePortfolio;

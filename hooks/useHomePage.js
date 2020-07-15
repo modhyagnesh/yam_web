@@ -1,7 +1,5 @@
 import useSWR from 'swr';
 
-import fetch from '@lib/fetch';
-
 const useHomePage = () => {
   const query = `
   {
@@ -143,7 +141,7 @@ const useHomePage = () => {
     url
   }  
   `;
-  return useSWR([query], fetch);
+  return useSWR([query]);
 };
 
 export default useHomePage;

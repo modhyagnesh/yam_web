@@ -1,54 +1,33 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './footer.module.css';
+import useFooter from '../../hooks/useFooter';
 
-const Footer = ({ footerStyle }) => {
+const Footer = () => {
+  const { data, error } = useFooter();
+
+  if (error) return <div>failed to load</div>;
   return (
-    <footer className="footer" style={footerStyle}>
+    <footer className="footer">
       <div className="container">
-        <h1>Let me develop the project you need.</h1>
+        <h1>{data?.footer.note}</h1>
         <div className="footer-logo">
           <span>
             Yagnesh <span />
           </span>
         </div>
-        <ul className="social-icons">
-          <li>
-            <a href="#" aria-label="facebook">
-              <FontAwesomeIcon icon={['fab', 'facebook-f']} />
-            </a>
-          </li>
-          <li>
-            <a href="#" aria-label="twitter">
-              <FontAwesomeIcon icon={['fab', 'twitter']} />
-            </a>
-          </li>
-          <li>
-            <a href="#" aria-label="instagram">
-              <FontAwesomeIcon icon={['fab', 'instagram']} />
-            </a>
-          </li>
-          <li>
-            <a href="#" aria-label="codepen">
-              <FontAwesomeIcon icon={['fab', 'youtube']} />
-            </a>
-          </li>
-          <li>
-            <a href="#" aria-label="facebook messenger">
-              <FontAwesomeIcon icon={['fab', 'linkedin']} />
-            </a>
-          </li>
-          <li>
-            <a href="#" aria-label="github">
-              <FontAwesomeIcon icon={['fab', 'github-alt']} />
-            </a>
-          </li>
-          <li>
-            <a href="#" aria-label="skype">
-              <FontAwesomeIcon icon={['fab', 'skype']} />
-            </a>
-          </li>
-        </ul>
-        <p className="copyright">© 2018 Yagnesh. All Rights Reserved</p>
+
+        <If condition={!!data?.footer.socialLinks}>
+          <ul className="social-icons">
+            <For each="item" of={data.footer.socialLinks}>
+              <li>
+                <a href={item.link} target="_blank" rel="noreferrer nooper" aria-label={item.label}>
+                  <FontAwesomeIcon icon={item.iconName?.split('_')} />
+                </a>
+              </li>
+            </For>
+          </ul>
+        </If>
+        <p className="copyright">{data?.footer.copyrightText}</p>
       </div>
     </footer>
   );

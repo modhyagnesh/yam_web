@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import { CMS_NAME } from '@constants';
-import Layout from '@components/layout';
 import Banner from '@components/Banner';
 import Contact from '@components/Contact';
 
@@ -12,7 +11,7 @@ const Index = () => {
   if (error) return <div>failed to load</div>;
 
   return (
-    <Layout footerStyle={{ marginTop: 0, paddingTop: 50 }}>
+    <>
       <Head>
         <title>Next.js Blog Example with {CMS_NAME}</title>
       </Head>
@@ -27,7 +26,7 @@ const Index = () => {
           alt="Profile avatar"
         />
       </a>
-    </Layout>
+    </>
   );
 };
 

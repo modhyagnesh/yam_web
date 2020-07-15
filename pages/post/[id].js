@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router';
 import Head from 'next/head';
-import Layout from '@components/layout';
 import { CMS_NAME } from '@constants';
 import usePost from '../../hooks/usePost';
 
@@ -13,7 +12,7 @@ const Posts = () => {
   if (error) return <div>failed to load</div>;
 
   return (
-    <Layout>
+    <>
       <Head>
         <title>Next.js Blog Example with {CMS_NAME}</title>
       </Head>
@@ -464,7 +463,7 @@ const Posts = () => {
           </div>
         </div>
       </section>
-    </Layout>
+    </>
   );
 };
 

@@ -1,6 +1,5 @@
 import Head from 'next/head';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Layout from '@components/layout';
 import { CMS_NAME } from '@constants';
 import useBlog from '../hooks/useBlog';
 import BlogList from '../components/BlogList';
@@ -10,7 +9,7 @@ const Posts = () => {
 
   if (error) return <div>failed to load</div>;
   return (
-    <Layout footerStyle={{ marginTop: 0, paddingTop: 50 }}>
+    <>
       <Head>
         <title>Next.js Blog Example with {CMS_NAME}</title>
       </Head>
@@ -58,7 +57,7 @@ const Posts = () => {
           </div>
         </div>
       </section>
-    </Layout>
+    </>
   );
 };
 

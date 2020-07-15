@@ -1,7 +1,5 @@
 import useSWR from 'swr';
 
-import fetch from '@lib/fetch';
-
 const useProject = (id) => {
   const query = `
   {
@@ -28,7 +26,7 @@ const useProject = (id) => {
     url
   }
   `;
-  return useSWR([query], fetch);
+  return useSWR([query]);
 };
 
 export default useProject;

@@ -1,7 +1,5 @@
 import useSWR from 'swr';
 
-import fetch from '@lib/fetch';
-
 const useResumePage = () => {
   const query = `
   {
@@ -75,7 +73,7 @@ const useResumePage = () => {
     url
   }  
   `;
-  return useSWR([query], fetch);
+  return useSWR([query]);
 };
 
 export default useResumePage;

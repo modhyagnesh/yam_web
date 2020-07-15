@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router';
-import Layout from '@components/layout';
 import Head from 'next/head';
 import Carousel from 'react-bootstrap/Carousel';
 import { CMS_NAME } from '@constants';
@@ -14,7 +13,7 @@ const PortfolioDetails = () => {
   if (error) return <div>failed to load</div>;
 
   return (
-    <Layout footerStyle={{ marginTop: 0, paddingTop: 50 }}>
+    <>
       <Head>
         <title>Next.js Blog Example with {CMS_NAME}</title>
       </Head>
@@ -149,7 +148,7 @@ const PortfolioDetails = () => {
           </div>
         </div>
       </section>
-    </Layout>
+    </>
   );
 };
 

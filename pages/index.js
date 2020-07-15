@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import { CMS_NAME } from '@constants';
-import Layout from '@components/layout';
 import Banner from '@components/Banner';
 import About from '@components/About';
 import Counter from '@components/Counter';
@@ -35,7 +34,7 @@ const Index = () => {
   }, {});
 
   return (
-    <Layout footerStyle={{ marginTop: 0 }}>
+    <>
       <Head>
         <title>Next.js Blog Example with {CMS_NAME}</title>
       </Head>
@@ -48,7 +47,7 @@ const Index = () => {
       <Testimonial data={dynamicFields?.testimonial} />
       <Blog data={data?.homePage.blog} />
       {/* <Contact data={data?.homePage.ContactMe} /> */}
-    </Layout>
+    </>
   );
 };
 
