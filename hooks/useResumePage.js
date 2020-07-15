@@ -2,8 +2,7 @@ import useSWR from 'swr';
 
 import fetch from '@lib/fetch';
 
-function useResumePage() {
-  const API = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/graphql`;
+const useResumePage = () => {
   const query = `
   {
     resumePage {
@@ -76,7 +75,7 @@ function useResumePage() {
     url
   }  
   `;
-  return useSWR([API, query], fetch);
-}
+  return useSWR([query], fetch);
+};
 
 export default useResumePage;

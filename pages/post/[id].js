@@ -1,11 +1,17 @@
-/* eslint-disable react/button-has-type */
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable jsx-a11y/anchor-is-valid */
+import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Layout from '@components/layout';
 import { CMS_NAME } from '@constants';
+import usePost from '../../hooks/usePost';
 
 const Posts = () => {
+  const router = useRouter();
+  const { id } = router.query;
+
+  const { data, error } = usePost(id);
+
+  if (error) return <div>failed to load</div>;
+
   return (
     <Layout>
       <Head>

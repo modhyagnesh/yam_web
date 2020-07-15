@@ -19,7 +19,6 @@ import './counter.module.css';
 
 // let a = true;
 
-// eslint-disable-next-line react/prop-types
 const Counter = ({ data }) => {
   const sectionRef = useRef(null);
   // useEffect(() => {

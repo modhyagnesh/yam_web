@@ -44,7 +44,6 @@ const Header = () => {
       >
         <div className="container">
           {/* Brand */}
-          {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
           <a className="navbar-brand" href="#">
             Yagnesh <span className="theme-bg" />
           </a>
@@ -90,9 +89,9 @@ const Header = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/portfolio">
-                  <a className={classNames('nav-link', { active: pathname === '/portfolio' })}>
-                    Portfolio
+                <Link href="/projects">
+                  <a className={classNames('nav-link', { active: pathname === '/projects' })}>
+                    Projects
                   </a>
                 </Link>
               </li>

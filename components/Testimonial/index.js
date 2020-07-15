@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/no-unescaped-entities */
 import Carousel from 'react-bootstrap/Carousel';
 import Skeleton from 'react-loading-skeleton';
 // import { useState } from 'react';
@@ -18,8 +16,6 @@ const Testimonial = ({ data }) => {
     // Default column count
     1,
   );
-
-  // eslint-disable-next-line jsx-a11y/control-has-associated-label
 
   return (
     <section className="section testimonial-section">

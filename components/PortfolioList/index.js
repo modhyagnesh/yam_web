@@ -52,7 +52,6 @@ const PortfolioList = ({ data }) => {
             <li className="portfolio-item" key={item.id}>
               <div className="portfolio-col portfolio-hover-01">
                 <div className="portfolio-img">
-                  {/*  eslint-disable-next-line no-script-url */}
                   <a href="javascript:void(0)" aria-label="portfolio Images">
                     <Skeleton height={250} width="100%" />
                   </a>

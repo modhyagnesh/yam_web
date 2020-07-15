@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 const webpack = require('webpack');
 const withCSS = require('@zeit/next-css');
 const withPrefresh = require('@prefresh/next');

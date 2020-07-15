@@ -1,6 +1,3 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable react/prop-types */
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import { useState } from 'react';
 import Skeleton from 'react-loading-skeleton';
 import Carousel from 'react-bootstrap/Carousel';

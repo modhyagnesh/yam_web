@@ -9,17 +9,16 @@ import Skill from '@components/Skill';
 import Portfolio from '@components/Portfolio';
 import Testimonial from '@components/Testimonial';
 import Blog from '@components/Blog';
-import Contact from '@components/Contact';
 
 import useHomePage from '../hooks/useHomePage';
 
 const Index = () => {
   const { data, error } = useHomePage();
+  console.log('Index -> data', data);
 
   if (error) return <div>failed to load</div>;
 
   const dynamicFields = (data?.homePage.dynamicFields || []).reduce((p, c) => {
-    // eslint-disable-next-line no-underscore-dangle
     switch (c.__typename) {
       case 'ComponentHomePageServices':
         return { ...p, services: c };

@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import Head from 'next/head';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Layout from '@components/layout';
@@ -6,7 +5,7 @@ import { CMS_NAME } from '@constants';
 import useBlog from '../hooks/useBlog';
 import BlogList from '../components/BlogList';
 
-const posts = () => {
+const Posts = () => {
   const { data, error } = useBlog();
 
   if (error) return <div>failed to load</div>;
@@ -63,4 +62,4 @@ const posts = () => {
   );
 };
 
-export default posts;
+export default Posts;

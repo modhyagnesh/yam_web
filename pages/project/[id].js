@@ -1,12 +1,18 @@
+import { useRouter } from 'next/router';
 import Layout from '@components/layout';
 import Head from 'next/head';
 import Carousel from 'react-bootstrap/Carousel';
 import { CMS_NAME } from '@constants';
-import usePortfolio from '../hooks/usePortfolio';
+import useProject from '../../hooks/useProject';
 
 const PortfolioDetails = () => {
-  const { data, error } = usePortfolio();
+  const router = useRouter();
+  const { id } = router.query;
+
+  const { data, error } = useProject(id);
+
   if (error) return <div>failed to load</div>;
+
   return (
     <Layout footerStyle={{ marginTop: 0, paddingTop: 50 }}>
       <Head>
@@ -24,7 +30,7 @@ const PortfolioDetails = () => {
           <div className="row">
             <div className="col-md-5">
               <Carousel indicators={false}>
-                <For each="item" of={data?.projects[2].images || []}>
+                <For each="item" of={data?.project.images || []}>
                   <Carousel.Item>
                     <img
                       className="d-block w-100"
@@ -46,7 +52,7 @@ const PortfolioDetails = () => {
                     color: '#151515',
                   }}
                 >
-                  {data?.projects[2].projectName}
+                  {data?.project.projectName}
                 </h2>
               </div>
 
@@ -59,7 +65,7 @@ const PortfolioDetails = () => {
                     color: '#151515',
                   }}
                 >
-                  {data?.projects[2].role}
+                  {data?.project.role}
                 </h3>
               </div>
 
@@ -132,12 +138,12 @@ const PortfolioDetails = () => {
 
               <div className="sidebar-widget">
                 <h2 className="title-style-1 font-alt">Project Description</h2>
-                <p>{data?.projects[2].Description}</p>
+                <p>{data?.project.Description}</p>
               </div>
 
               <div className="sidebar-widget">
                 <h2 className="title-style-1 font-alt">Visit Link</h2>
-                <a href={data?.projects[2].link}>{data?.projects[2].link}</a>
+                <a href={data?.project.link}>{data?.project.link}</a>
               </div>
             </div>
           </div>

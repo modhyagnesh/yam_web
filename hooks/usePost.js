@@ -2,10 +2,10 @@ import useSWR from 'swr';
 
 import fetch from '@lib/fetch';
 
-const useBlog = () => {
+const usePost = (id) => {
   const query = `
   {
-    blogs(start: 0, limit: 9, sort: "created_at:desc") {
+    blog(id: ${Number(id || 0)}) {
       id
       Title
       description
@@ -31,4 +31,4 @@ const useBlog = () => {
   return useSWR([query], fetch);
 };
 
-export default useBlog;
+export default usePost;

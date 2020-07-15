@@ -2,10 +2,10 @@ import useSWR from 'swr';
 
 import fetch from '@lib/fetch';
 
-const usePortfolio = () => {
+const useProject = (id) => {
   const query = `
   {
-    projects(start: 0, limit: 9, sort: "created_at:desc") {
+    project(id: ${Number(id || 0)}) {
       id
       projectName
       Description
@@ -31,4 +31,4 @@ const usePortfolio = () => {
   return useSWR([query], fetch);
 };
 
-export default usePortfolio;
+export default useProject;

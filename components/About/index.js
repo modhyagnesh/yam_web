@@ -1,5 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
-
 import PropTypes from 'prop-types';
 
 import classNames from 'classnames';

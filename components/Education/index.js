@@ -1,5 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
-
 import PropTypes from 'prop-types';
 import format from 'date-fns/format';
 

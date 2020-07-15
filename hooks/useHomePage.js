@@ -2,8 +2,7 @@ import useSWR from 'swr';
 
 import fetch from '@lib/fetch';
 
-function useHomePage() {
-  const API = `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/graphql`;
+const useHomePage = () => {
   const query = `
   {
     homePage {
@@ -144,7 +143,7 @@ function useHomePage() {
     url
   }  
   `;
-  return useSWR([API, query], fetch);
-}
+  return useSWR([query], fetch);
+};
 
 export default useHomePage;

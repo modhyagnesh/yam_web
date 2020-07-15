@@ -1,4 +1,3 @@
-/* eslint-disable react/static-property-placement */
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 

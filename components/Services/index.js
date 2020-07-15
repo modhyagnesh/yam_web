@@ -1,12 +1,9 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import { useState } from 'react';
 import Skeleton from 'react-loading-skeleton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Modal from '../Modal/index';
-
 import './services.module.css';
-// eslint-disable-next-line no-unused-vars
+
 const Services = ({ data }) => {
   const [modalContent, setModalContent] = useState(null);
   return (

@@ -1,6 +1,3 @@
-/* eslint-disable react/no-this-in-sfc */
-/* eslint-disable no-restricted-globals */
-// import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import '@styles/index.css';
 import 'lazysizes';

@@ -1,6 +1,3 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable jsx-a11y/control-has-associated-label */
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import Skeleton from 'react-loading-skeleton';
 import ProgressBar from '../ProgressBar/index';
 
