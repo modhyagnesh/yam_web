@@ -9,6 +9,7 @@ const useResumePage = () => {
       }
       content
       buttonText
+      buttonLink
       resume {
         ...file
       }

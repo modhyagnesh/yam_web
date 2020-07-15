@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useMarkdown from '@hooks/useMarkdown';
@@ -14,7 +15,7 @@ const Banner = ({ data }) => {
       id="home-box"
       className="home-banner-01"
       style={{
-        backgroundImage: `url(${data.backgroundMedia.url.replace(
+        backgroundImage: `url(${data?.backgroundMedia.url.replace(
           'upload/',
           'upload/f_auto,q_70/',
         )})`,
@@ -25,18 +26,34 @@ const Banner = ({ data }) => {
           <div className="col col-md-12 col-lg-6 p-80px-tb">
             <div className="home-text-center">
               <div className="markdown" dangerouslySetInnerHTML={{ __html: HTML }} />
-              <If condition={data.buttonText}>
-                <div className="btn-bar">
-                  <a
-                    className="m-btn m-btn-theme"
-                    href={data.buttonLink}
-                    aria-label={data.buttonText}
-                  >
-                    {data.buttonText}
-                    <FontAwesomeIcon icon="arrow-right" />
-                  </a>
-                </div>
-              </If>
+              <div className="btn-bar">
+                <Choose>
+                  <When condition={!!data.buttonText && !data?.resume}>
+                    <Link href={data.buttonLink}>
+                      <a className="m-btn m-btn-theme" aria-label={data.buttonText} download>
+                        {data.buttonText}
+                        <FontAwesomeIcon icon="arrow-right" />
+                      </a>
+                    </Link>
+                  </When>
+                  <When condition={!!data.buttonText && !!data?.resume}>
+                    <a
+                      className="m-btn m-btn-theme"
+                      aria-label={data.buttonText}
+                      target="_blank"
+                      rel="noreferrer nooper"
+                      href={data.buttonLink}
+                      download={data.resume.name}
+                    >
+                      {data.buttonText}
+                      <FontAwesomeIcon icon="arrow-right" />
+                    </a>
+                  </When>
+                  <Otherwise>
+                    <></>
+                  </Otherwise>
+                </Choose>
+              </div>
             </div>
             {/*  home-text-center */}
           </div>
