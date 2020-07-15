@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Skeleton from 'react-loading-skeleton';
 import ProgressBar from '../ProgressBar/index';
 
@@ -15,10 +16,12 @@ const Skill = ({ data }) => {
               <p className="m-40px-b">{data?.description ?? <Skeleton count={3} />}</p>
               <Choose>
                 <When condition={data?.buttonText}>
-                  <a href={data.buttonLink} className="m-btn m-btn-theme">
-                    {data.buttonText}
-                    {/* <FontAwesomeIcon icon="arrow-right" /> */}
-                  </a>
+                  <Link href={data.buttonLink}>
+                    <a className="m-btn m-btn-theme">
+                      {data.buttonText}
+                      {/* <FontAwesomeIcon icon="arrow-right" /> */}
+                    </a>
+                  </Link>
                 </When>
                 <Otherwise>
                   <Skeleton height={45} width={165} style={{ borderRadius: 45 }} />

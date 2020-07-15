@@ -29,6 +29,6 @@ const Resume = () => {
   );
 };
 
-Resume.displayName = 'HomePage';
+Resume.WhiteHeader = true;
 
 export default Resume;

@@ -28,6 +28,8 @@ import {
   faChevronLeft,
   faStar,
   faStarHalfAlt,
+  faEnvelope,
+  faDirections,
 } from '@fortawesome/free-solid-svg-icons';
 
 import { faStar as faStartAlt } from '@fortawesome/free-regular-svg-icons';
@@ -70,18 +72,22 @@ library.add(
   faChevronRight,
   faChevronLeft,
   faWhatsapp,
+  faEnvelope,
+  faDirections,
 );
 
 // config.autoAddCss = false; // Tell Font Awesome to skip adding the CSS automatically since it's being imported above
 
 const MyApp = ({ Component, pageProps }) => {
+  const { WhiteHeader } = Component;
+
   return (
     <SWRConfig
       value={{
         fetcher: fetch,
       }}
     >
-      <Layout>
+      <Layout whiteHeader={!!WhiteHeader}>
         <Component {...pageProps} />
       </Layout>
     </SWRConfig>

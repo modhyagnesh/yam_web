@@ -1,11 +1,14 @@
+import { useState } from 'react';
 import Head from 'next/head';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { CMS_NAME } from '@constants';
 import useBlog from '../hooks/useBlog';
 import BlogList from '../components/BlogList';
+import Pagination from '../components/Pagination';
 
 const Posts = () => {
-  const { data, error } = useBlog();
+  const [page, setPage] = useState(0);
+  const { data, error } = useBlog(page);
 
   if (error) return <div>failed to load</div>;
   return (
@@ -26,35 +29,9 @@ const Posts = () => {
             <BlogList data={data} />
           </If>
 
-          <div className="bottom-pagination">
-            <ul className="pagination justify-content-center">
-              <li className="page-item disabled">
-                <a className="page-link" href="#" tabIndex="-1">
-                  Previous
-                </a>
-              </li>
-              <li className="page-item">
-                <a className="page-link" href="#">
-                  1
-                </a>
-              </li>
-              <li className="page-item active">
-                <a className="page-link" href="#">
-                  2 <span className="sr-only">(current)</span>
-                </a>
-              </li>
-              <li className="page-item">
-                <a className="page-link" href="#">
-                  3
-                </a>
-              </li>
-              <li className="page-item">
-                <a className="page-link" href="#">
-                  Next
-                </a>
-              </li>
-            </ul>
-          </div>
+          <If condition={!!data?.totalcount}>
+            <Pagination page={page} totalcount={data.totalcount} changePage={setPage} />
+          </If>
         </div>
       </section>
     </>

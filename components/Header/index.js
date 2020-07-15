@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { useRef, useEffect } from 'react';
 import './Header.module.css';
 
-const Header = () => {
+const Header = ({ whiteHeader }) => {
   const navbarRef = useRef(null);
   const collapseRef = useRef(null);
   const { pathname } = useRouter();
@@ -39,7 +39,9 @@ const Header = () => {
   return (
     <header>
       <nav
-        className="navbar header-nav header-nav-white fixed-top navbar-expand-lg"
+        className={classNames('navbar', 'header-nav', 'fixed-top', 'navbar-expand-lg', {
+          'header-nav-white': whiteHeader,
+        })}
         ref={navbarRef}
       >
         <div className="container">

@@ -1,4 +1,4 @@
-import React from 'react';
+import Link from 'next/link';
 import classNames from 'classnames';
 import './blogList.module.css';
 
@@ -15,19 +15,21 @@ const BlogList = ({ data }) => {
           )}
         >
           <div className="blog-item  md-m-15px-tb">
-            <a href="#" aria-label="blog image">
-              <img
-                className="lazyload"
-                data-src={
-                  item.image.url.replace(
-                    'upload/',
-                    'upload/ar_4:3,c_fill/c_scale,w_auto,dpr_auto/',
-                  ) || 'static/img/placeholder-750x500.png'
-                }
-                title="Yagnesh"
-                alt="Yagnesh"
-              />
-            </a>
+            <Link href="/post/[id]" as={`/post/${item.id}`}>
+              <a aria-label="blog image">
+                <img
+                  className="lazyload"
+                  data-src={
+                    item.image.url.replace(
+                      'upload/',
+                      'upload/ar_4:3,c_fill/c_scale,w_auto,dpr_auto/',
+                    ) || 'static/img/placeholder-750x500.png'
+                  }
+                  title="Yagnesh"
+                  alt="Yagnesh"
+                />
+              </a>
+            </Link>
             <div className="blog-content">
               <div className="post-meta">
                 By
@@ -38,15 +40,19 @@ const BlogList = ({ data }) => {
               </div>
 
               <h4>
-                <a className="theme-color" href="#" aria-label="description">
-                  {item.Title}
-                </a>
+                <Link href="/post/[id]" as={`/post/${item.id}`}>
+                  <a className="theme-color" aria-label="description">
+                    {item.Title}
+                  </a>
+                </Link>
               </h4>
               <p>{item.description}</p>
-              <a href="#" className="more-btn" aria-label="Read More">
-                Read More
-                {/* <FontAwesomeIcon icon="arrow-right" /> */}
-              </a>
+              <Link href="/post/[id]" as={`/post/${item.id}`}>
+                <a className="more-btn" aria-label="Read More">
+                  Read More
+                  {/* <FontAwesomeIcon icon="arrow-right" /> */}
+                </a>
+              </Link>
             </div>
             {/* /blog-content */}
           </div>

@@ -1,11 +1,15 @@
 import Head from 'next/head';
+import { useState } from 'react';
+
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { CMS_NAME } from '@constants';
 import usePortfolio from '../hooks/usePortfolio';
 import PortfolioList from '../components/PortfolioList';
+import Pagination from '../components/Pagination';
 
 const Portfolio = () => {
-  const { data, error } = usePortfolio();
+  const [page, setPage] = useState(0);
+  const { data, error } = usePortfolio(page);
 
   if (error) return <div>failed to load</div>;
   return (
@@ -25,36 +29,9 @@ const Portfolio = () => {
           <div className="row">
             <PortfolioList data={data} />
           </div>
-
-          <div className="bottom-pagination">
-            <ul className="pagination justify-content-center">
-              <li className="page-item disabled">
-                <a className="page-link" href="#" tabIndex="-1">
-                  Previous
-                </a>
-              </li>
-              <li className="page-item">
-                <a className="page-link" href="#">
-                  1
-                </a>
-              </li>
-              <li className="page-item active">
-                <a className="page-link" href="#">
-                  2 <span className="sr-only">(current)</span>
-                </a>
-              </li>
-              <li className="page-item">
-                <a className="page-link" href="#">
-                  3
-                </a>
-              </li>
-              <li className="page-item">
-                <a className="page-link" href="#">
-                  Next
-                </a>
-              </li>
-            </ul>
-          </div>
+          <If condition={!!data?.totalcount}>
+            <Pagination page={page} totalcount={data.totalcount} changePage={setPage} />
+          </If>
         </div>
       </section>
     </>

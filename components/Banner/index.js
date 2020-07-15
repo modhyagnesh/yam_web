@@ -25,16 +25,18 @@ const Banner = ({ data }) => {
           <div className="col col-md-12 col-lg-6 p-80px-tb">
             <div className="home-text-center">
               <div className="markdown" dangerouslySetInnerHTML={{ __html: HTML }} />
-              <div className="btn-bar">
-                <a
-                  className="m-btn m-btn-theme"
-                  href={data.buttonLink}
-                  aria-label={data.buttonText}
-                >
-                  {data.buttonText}
-                  {/* <FontAwesomeIcon icon="arrow-right" /> */}
-                </a>
-              </div>
+              <If condition={data.buttonText}>
+                <div className="btn-bar">
+                  <a
+                    className="m-btn m-btn-theme"
+                    href={data.buttonLink}
+                    aria-label={data.buttonText}
+                  >
+                    {data.buttonText}
+                    {/* <FontAwesomeIcon icon="arrow-right" /> */}
+                  </a>
+                </div>
+              </If>
             </div>
             {/*  home-text-center */}
           </div>

@@ -1,9 +1,9 @@
 import useSWR from 'swr';
 
-const useBlog = () => {
+const useBlog = (page) => {
   const query = `
   {
-    blogs(start: 0, limit: 9, sort: "created_at:desc") {
+    blogs(start: ${page * 9}, limit: 9, sort: "created_at:desc") {
       id
       Title
       description
@@ -17,6 +17,7 @@ const useBlog = () => {
         categoryDescription
       }
     }
+    totalcount: blogsCount
   }
   
   fragment file on UploadFile {

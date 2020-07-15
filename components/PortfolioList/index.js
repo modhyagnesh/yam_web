@@ -1,4 +1,4 @@
-import React from 'react';
+import Link from 'next/link';
 import Skeleton from 'react-loading-skeleton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './portfolioList.module.css';
@@ -16,22 +16,22 @@ const PortfolioList = ({ data }) => {
                     className="lazyload d-block w-100"
                     style={{ height: 240 }}
                     data-src={
-                      item.images
-                        .find((x) => x.name === 'cover')
-                        ?.url.replace(
-                          'upload/',
-                          'upload/ar_4:3,c_fill/c_scale,w_auto,dpr_auto,q_auto/',
-                        ) || 'static/img/placeholder-750x500.png'
+                      item.coverImage?.url.replace(
+                        'upload/',
+                        'upload/ar_4:3,c_fill/c_scale,w_auto,dpr_auto,q_auto/',
+                      ) || 'static/img/placeholder-750x500.png'
                     }
                     title="portfolio Images"
                     alt="portfolio"
                   />
                   <div className="hover">
                     <div className="action-btn">
-                      <a className="m-btn m-btn-theme" href="">
-                        View Project
-                        <FontAwesomeIcon icon="arrow-right" />
-                      </a>
+                      <Link href="/project/[id]" as={`/project/${item.id}`}>
+                        <a className="m-btn m-btn-theme">
+                          View Project
+                          <FontAwesomeIcon icon="arrow-right" />
+                        </a>
+                      </Link>
                     </div>
                     {/* Video Btn */}
                   </div>

@@ -1,9 +1,9 @@
 import useSWR from 'swr';
 
-const usePortfolio = () => {
+const usePortfolio = (page) => {
   const query = `
   {
-    projects(start: 0, limit: 9, sort: "created_at:desc") {
+    projects(start: ${page * 9}, limit: 9, sort: "created_at:desc") {
       id
       projectName
       Description
@@ -13,10 +13,11 @@ const usePortfolio = () => {
       video {
         ...file
       }
-      images {
+      coverImage {
         ...file
       }
-    }   
+    }
+    totalcount: projectsCount   
   }
   
   fragment file on UploadFile {

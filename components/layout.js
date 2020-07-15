@@ -5,19 +5,24 @@ import Meta from './meta';
 import Header from './Header';
 import Footer from './Footer';
 
-const Layout = ({ children, footerStyle }) => {
+const Layout = ({ children, whiteHeader }) => {
   return (
     <>
       <Meta />
-      <Header />
+      <Header whiteHeader={whiteHeader} />
       <main>{children}</main>
-      <Footer footerStyle={footerStyle} />
+      <Footer />
     </>
   );
 };
 
 Layout.propTypes = {
   children: PropTypes.arrayOf(PropTypes.element).isRequired,
+  whiteHeader: PropTypes.bool,
+};
+
+Layout.defaultProps = {
+  whiteHeader: true,
 };
 
 export default Layout;

@@ -22,30 +22,11 @@ const useHomePage = () => {
         number
         description
       }
-      ContactMe {
-        title
-        description
-        address {
-          addressLine1
-          addressLine2
-          city
-          state
-          country
-          zipcode
-          latitude
-          longitude
-        }
-        phoneNumbers {
-          phoneNumber
-        }
-        emails {
-          email
-        }
-      }
       blog {
         title
         description
         blogs {
+          id
           Title
           description
           image {
@@ -95,7 +76,7 @@ const useHomePage = () => {
             video {
               ...file
             }
-            images {
+            coverImage {
               ...file
             }
           }

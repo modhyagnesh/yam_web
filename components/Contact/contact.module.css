@@ -1,6 +1,15 @@
 /*-----------------------------------------
 *  Contact us
 -----------------------------------------*/
+.alertDiv {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 1050
+}
+
 .contact-info-box {
     padding: 8%;
   }
@@ -39,6 +48,7 @@
   .contact-info-box .contact-info p {
     margin: 0;
     font-size: 14px;
+    min-height: 40px;
   }
   
   .contact-info-box .social-icons {

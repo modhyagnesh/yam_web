@@ -53,4 +53,6 @@ const Index = () => {
 
 Index.displayName = 'HomePage';
 
+Index.WhiteHeader = true;
+
 export default Index;

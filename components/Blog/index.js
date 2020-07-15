@@ -1,4 +1,5 @@
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Link from 'next/link';
 import Skeleton from 'react-loading-skeleton';
 import BlogList from '../BlogList';
 
@@ -20,10 +21,12 @@ const Blog = ({ data }) => {
         </If>
 
         <div className="d-flex justify-content-center m-50px-t md-m-25px-t">
-          <a className="m-btn m-btn-theme" href="">
-            View More Posts
-            {/* <FontAwesomeIcon icon="arrow-right" /> */}
-          </a>
+          <Link href="/posts">
+            <a className="m-btn m-btn-theme">
+              View More Posts
+              {/* <FontAwesomeIcon icon="arrow-right" /> */}
+            </a>
+          </Link>
         </div>
       </div>
       {/* container */}

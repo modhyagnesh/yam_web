@@ -4,9 +4,11 @@ import Banner from '@components/Banner';
 import Contact from '@components/Contact';
 
 import useHomePage from '../hooks/useHomePage';
+import useContact from '../hooks/useContact';
 
 const Index = () => {
-  const { data, error } = useHomePage();
+  // const { data, error } = useHomePage();
+  const { data, error } = useContact();
 
   if (error) return <div>failed to load</div>;
 
@@ -15,9 +17,13 @@ const Index = () => {
       <Head>
         <title>Next.js Blog Example with {CMS_NAME}</title>
       </Head>
-      <Banner data={data?.homePage.home} />
-      <Contact data={data?.homePage.ContactMe} />
-      <a href="#">
+      <Banner data={data?.contactPage} />
+      <Contact data={data?.contactPage} />
+      <div
+        className="d-block w-100"
+        style={{ height: 100, backgroundColor: '#111', marginTop: -100 }}
+      />
+      {/* <a href="#">
         <img
           className="lazyload d-block w-100"
           style={{ marginTop: -100 }}
@@ -25,11 +31,11 @@ const Index = () => {
           title="Profile Picture"
           alt="Profile avatar"
         />
-      </a>
+      </a> */}
     </>
   );
 };
 
-Index.displayName = 'HomePage';
+Index.WhiteHeader = true;
 
 export default Index;

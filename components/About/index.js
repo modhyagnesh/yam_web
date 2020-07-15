@@ -1,5 +1,5 @@
+import Link from 'next/link';
 import PropTypes from 'prop-types';
-
 import classNames from 'classnames';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useMarkdown from '@hooks/useMarkdown';
@@ -41,14 +41,12 @@ const About = ({ data }) => {
             <div className="about-left">
               <Choose>
                 <When condition={data?.buttonText && data?.buttonLink}>
-                  <a
-                    className="m-btn m-btn-theme"
-                    aria-label={data.buttonText}
-                    href={data.buttonLink}
-                  >
-                    {data.buttonText}
-                    {/* <FontAwesomeIcon icon="arrow-right" /> */}
-                  </a>
+                  <Link href={data.buttonLink}>
+                    <a className="m-btn m-btn-theme" aria-label={data.buttonText}>
+                      {data.buttonText}
+                      {/* <FontAwesomeIcon icon="arrow-right" /> */}
+                    </a>
+                  </Link>
                 </When>
                 <Otherwise>
                   <Skeleton height={45} width={165} style={{ borderRadius: 45 }} />
