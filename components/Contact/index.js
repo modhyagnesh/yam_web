@@ -83,8 +83,8 @@ const Contact = ({ data }) => {
                 <div className="contact-info-box">
                   <h2>get in touch</h2>
                   <p className="desc">
-                    Are you looking for a Full-Stack developer? Or maybe you need some consulting or
-                    training services? just contact me.
+                    If you like my work and have some cool project to work on, just send me direct
+                    message or contact me through social sites listed below.
                   </p>
                   <div className="contact-info">
                     <span className="icon theme-bg">

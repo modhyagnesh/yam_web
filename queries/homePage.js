@@ -48,7 +48,9 @@ export default `{
           id
           title
           description
-          category
+          categories{
+            categoryName
+          }
           portfolioLink
           videoLink
           portfolioImages {

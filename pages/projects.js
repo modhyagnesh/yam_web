@@ -24,7 +24,7 @@ const Portfolio = () => {
         {/* container */}
       </section>
 
-      <section className="section blog-lising">
+      <section id="portfolio" className="section">
         <div className="container">
           <div className="row">
             <PortfolioList data={data} />

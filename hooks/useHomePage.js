@@ -71,7 +71,9 @@ const useHomePage = () => {
             projectName
             Description
             link
-            category
+            categories{
+              categoryName
+            }
             role
             video {
               ...file

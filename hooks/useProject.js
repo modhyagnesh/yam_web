@@ -8,8 +8,10 @@ const useProject = (id) => {
       projectName
       Description
       link
-      category
       role
+      categories{
+        categoryName
+      }
       video {
         ...file
       }

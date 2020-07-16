@@ -8,8 +8,10 @@ const usePortfolio = (page) => {
       projectName
       Description
       link
-      category
       role
+      categories{
+        categoryName
+      }
       video {
         ...file
       }
