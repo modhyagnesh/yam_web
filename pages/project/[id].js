@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import Head from 'next/head';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Carousel from 'react-bootstrap/Carousel';
 import { CMS_NAME } from '@constants';
 import useProject from '../../hooks/useProject';
@@ -28,7 +29,41 @@ const PortfolioDetails = () => {
         <div className="container">
           <div className="row">
             <div className="col-md-5">
-              <Carousel indicators={false}>
+              <Carousel
+                indicators={false}
+                nextIcon={
+                  <span
+                    style={{
+                      display: 'flex',
+                      backgroundColor: 'rgba(0,0,0,0.4)',
+                      width: 32,
+                      height: 32,
+                      borderRadius: 16,
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      lineHeight: 0,
+                    }}
+                  >
+                    <FontAwesomeIcon icon="chevron-right" color="#fff" fixedWidth />
+                  </span>
+                }
+                prevIcon={
+                  <span
+                    style={{
+                      display: 'flex',
+                      backgroundColor: 'rgba(0,0,0,0.4)',
+                      width: 32,
+                      height: 32,
+                      borderRadius: 16,
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      lineHeight: 0,
+                    }}
+                  >
+                    <FontAwesomeIcon icon="chevron-left" color="#fff" fixedWidth />
+                  </span>
+                }
+              >
                 <For each="item" of={data?.project.images || []}>
                   <Carousel.Item>
                     <img
@@ -68,82 +103,63 @@ const PortfolioDetails = () => {
                 </h3>
               </div>
 
-              <div className="sidebar-widget">
-                <h2 className="title-style-1 font-alt">Project Categories</h2>
-                <div className="widget-popular-tag">
-                  <ul className="list-style-tag">
-                    <li>
-                      <a href="#">Mrig</a>
-                    </li>
-                    <li>
-                      <a href="#">HTML</a>
-                    </li>
-                    <li>
-                      <a href="#">CSS</a>
-                    </li>
-                    <li>
-                      <a href="#">UI</a>
-                    </li>
-                    <li>
-                      <a href="#">One Page</a>
-                    </li>
-                  </ul>
+              <If condition={!!data?.project.categories}>
+                <div className="sidebar-widget">
+                  <h2 className="title-style-1 font-alt">Project Categories</h2>
+                  <div className="widget-popular-tag">
+                    <ul className="list-style-tag">
+                      <For each="item" of={data?.project.categories}>
+                        <li>
+                          <a href="#" target="_blank" rel="noreferrer nooper">
+                            {item.categoryName}
+                          </a>
+                        </li>
+                      </For>
+                    </ul>
+                  </div>
                 </div>
-              </div>
+              </If>
 
-              <div className="sidebar-widget">
-                <h2 className="title-style-1 font-alt">Technology Used</h2>
-                <div className="widget-popular-tag">
-                  <ul className="list-style-tag">
-                    <li>
-                      <a href="#">Mrig</a>
-                    </li>
-                    <li>
-                      <a href="#">HTML</a>
-                    </li>
-                    <li>
-                      <a href="#">CSS</a>
-                    </li>
-                    <li>
-                      <a href="#">UI</a>
-                    </li>
-                    <li>
-                      <a href="#">One Page</a>
-                    </li>
-                    <li>
-                      <a href="#">Multi</a>
-                    </li>
-                    <li>
-                      <a href="#">Theme</a>
-                    </li>
-                    <li>
-                      <a href="#">Bootstrap</a>
-                    </li>
-                    <li>
-                      <a href="#">Design</a>
-                    </li>
-                    <li>
-                      <a href="#">UX</a>
-                    </li>
-                    <li>
-                      <a href="#">Wordpress</a>
-                    </li>
-                    <li>
-                      <a href="#">Magento</a>
-                    </li>
-                  </ul>
+              <If condition={!!data?.project.skills}>
+                <div className="sidebar-widget">
+                  <h2 className="title-style-1 font-alt">Technology Used</h2>
+                  <div className="widget-popular-tag">
+                    <ul className="list-style-tag">
+                      <For each="item" of={data?.project.skills}>
+                        <li>
+                          <a href={item.link} target="_blank" rel="noreferrer nooper">
+                            {item.name}
+                          </a>
+                        </li>
+                      </For>
+                    </ul>
+                  </div>
                 </div>
-              </div>
+              </If>
 
-              <div className="sidebar-widget">
-                <h2 className="title-style-1 font-alt">Project Description</h2>
-                <p>{data?.project.Description}</p>
-              </div>
+              <If condition={!!data?.project.Description}>
+                <div className="sidebar-widget">
+                  <h2 className="title-style-1 font-alt">Project Description</h2>
+                  <p>{data?.project.Description}</p>
+                </div>
+              </If>
 
-              <div className="sidebar-widget">
-                <h2 className="title-style-1 font-alt">Visit Link</h2>
-                <a href={data?.project.link}>{data?.project.link}</a>
-              </div>
+              <If condition={!!data?.project.link}>
+                <div className="sidebar-widget">
+                  <h2 className="title-style-1 font-alt">Visit Link</h2>
+                  <a
+                    href={data?.project.link}
+                    target="_blank"
+                    rel="noreferrer nooper"
+                    style={{
+                      fontWeight: '600',
+                      color: '#333',
+                    }}
+                  >
+                    {data?.project.link}
+                  </a>
+                </div>
+              </If>
             </div>
           </div>
         </div>

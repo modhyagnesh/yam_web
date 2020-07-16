@@ -9,6 +9,10 @@ const useProject = (id) => {
       Description
       link
       role
+      skills {
+        name
+        link
+      }
       categories{
         categoryName
       }

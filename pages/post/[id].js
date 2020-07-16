@@ -1,6 +1,8 @@
 import { useRouter } from 'next/router';
 import Head from 'next/head';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { CMS_NAME } from '@constants';
+import useMarkdown from '@hooks/useMarkdown';
 import usePost from '../../hooks/usePost';
 
 const Posts = () => {
@@ -8,6 +10,8 @@ const Posts = () => {
   const { id } = router.query;
 
   const { data, error } = usePost(id);
+  console.log('Posts -> data', data);
+  const { HTML } = useMarkdown(data?.blog.content);
 
   if (error) return <div>failed to load</div>;
 
@@ -16,9 +20,9 @@ const Posts = () => {
       <Head>
         <title>Next.js Blog Example with {CMS_NAME}</title>
       </Head>
-      <section className="page-title">
-        <div className="container">
-          <h1 className="font-alt">Blog List</h1>
+      <section className="page-title" style={{ backgroundColor: 'black' }}>
+        <div className="containers">
+          <h1 className="font-alt">{data?.blog.Title}</h1>
         </div>
         {/* container */}
       </section>
@@ -30,10 +34,18 @@ const Posts = () => {
             {/* Content area */}
             <div className="col-12 p-50px-r md-p-15px-r">
               <div className="bog-content-area">
-                <div className="m-30px-b">
-                  <img className="lazyload" data-src="static/img/overlay-1.png" title="" alt="" />
-                </div>
-                <p>
+                <If condition={!!data?.blog.image.url}>
+                  <div className="m-30px-b">
+                    <img
+                      className="lazyload d-block w-100"
+                      data-src={data?.blog.image.url}
+                      title="portfolio Images"
+                      alt="portfolio"
+                    />
+                  </div>
+                </If>
+                <div className="markdown" dangerouslySetInnerHTML={{ __html: HTML }} />
+                {/* <p>
                   <span className="first-letter">L</span>orem ipsum dolor sit amet, consectetur
                   adipisicing elit, <strong className="theme-color">sed do eiusmod tempor</strong>
                   incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
@@ -42,8 +54,8 @@ const Posts = () => {
                   fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
                   culpa qui <span className="theme-color">officia deserunt mollit</span> anim id est
                   laborum.
-                </p>
-                <p>
+                </p> */}
+                {/* <p>
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit,
                   <strong>
                     <a className="theme-color" href="#">
@@ -55,81 +67,73 @@ const Posts = () => {
                   aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
                   nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
                   officia deserunt mollit anim id est laborum.
-                </p>
+                </p> */}
 
-                <blockquote className="blockquote-left">
+                {/* <blockquote className="blockquote-left">
                   <p>
                     Lduis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
                     fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
                     culpa qui officia deserunt mollit anim id est laborum.
                   </p>
                   <label className="parson">- Ryanr</label>
-                </blockquote>
+                </blockquote> */}
 
-                <p>
+                {/* <p>
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
                   incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
                   exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
                   irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
                   pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
                   officia deserunt mollit anim id est laborum.
-                </p>
+                </p> */}
 
-                <p>
+                {/* <p>
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
                   incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
                   exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
                   irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
                   pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
                   officia deserunt mollit anim id est laborum.
-                </p>
+                </p> */}
               </div>
               {/* content are */}
               <div className="blog-tag-nav">
                 <div className="row">
-                  <div className="col-12 col-md-6 align-self-center text-center text-sm-left sm-m-10px-tb">
-                    <ul className="list-style-tag">
-                      <li>
-                        <a href="#">Mrig</a>
-                      </li>
-                      <li>
-                        <a href="#">HTML</a>
-                      </li>
-                      <li>
-                        <a href="#">CSS</a>
-                      </li>
-                      <li>
-                        <a href="#">UI</a>
-                      </li>
-                    </ul>
-                  </div>
+                  <If condition={!!data?.blog.categories}>
+                    <div className="col-12 col-md-6 align-self-center text-center text-sm-left sm-m-10px-tb">
+                      <ul className="list-style-tag">
+                        <For each="item" of={data?.blog.categories}>
+                          <li>
+                            <a href="#" target="_blank" rel="noreferrer nooper">
+                              {item.categoryName}
+                            </a>
+                          </li>
+                        </For>
+                      </ul>
+                    </div>
+                  </If>
                   <div className="col-12 col-md-6 text-center text-sm-right align-self-center sm-m-10px-tb">
                     <ul className="social-icons">
                       <li>
                         <a className="facebook" href="#">
-                          <i className="fab fa-facebook-f" />
+                          <FontAwesomeIcon icon={['fab', 'facebook-f']} />
                         </a>
                       </li>
                       <li>
                         <a className="twitter" href="#">
-                          <i className="fab fa-twitter" />
+                          <FontAwesomeIcon icon={['fab', 'twitter']} />
                         </a>
                       </li>
                       <li>
                         <a className="google" href="#">
-                          <i className="fab fa-google-plus-g" />
-                        </a>
-                      </li>
-                      <li>
-                        <a className="linkedin" href="#">
-                          <i className="fab fa-linkedin-in" />
+                          <FontAwesomeIcon icon={['fab', 'linkedin-in']} />
                         </a>
                       </li>
                     </ul>
                   </div>
                 </div>
               </div>
-              {/* <div className="blog-comment-area">
+              {/* <div className="blo g-comment-area">
                 <h2 className="title-style-1 font-alt">Commets 3</h2>
                 <ul className="blog-comment">
                   <li>

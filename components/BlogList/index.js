@@ -19,7 +19,7 @@ const BlogList = ({ data }) => {
             <Link href="/post/[id]" as={`/post/${item.id}`}>
               <a aria-label="blog image">
                 <img
-                  className="lazyload"
+                  className="lazyload d-block w-100"
                   data-src={
                     item.image.url.replace(
                       'upload/',

@@ -43,6 +43,7 @@ import {
   faYoutube,
   faLinkedin,
   faWhatsapp,
+  faLinkedinIn,
 } from '@fortawesome/free-brands-svg-icons';
 
 library.add(
@@ -74,6 +75,7 @@ library.add(
   faWhatsapp,
   faEnvelope,
   faDirections,
+  faLinkedinIn,
 );
 
 // config.autoAddCss = false; // Tell Font Awesome to skip adding the CSS automatically since it's being imported above
