@@ -1,7 +1,6 @@
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { CMS_NAME } from '@constants';
 import useMarkdown from '@hooks/useMarkdown';
 import usePost from '../../hooks/usePost';
 
@@ -18,7 +17,7 @@ const Posts = () => {
   return (
     <>
       <Head>
-        <title>Next.js Blog Example with {CMS_NAME}</title>
+        <title>{data?.blog.Title}</title>
       </Head>
       <section className="page-title" style={{ backgroundColor: 'black' }}>
         <div className="containers">

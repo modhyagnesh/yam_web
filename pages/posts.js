@@ -14,7 +14,7 @@ const Posts = () => {
   return (
     <>
       <Head>
-        <title>Next.js Blog Example with {CMS_NAME}</title>
+        <title>Blog Page</title>
       </Head>
       <section className="page-title" style={{ backgroundColor: 'black' }}>
         <div className="container">

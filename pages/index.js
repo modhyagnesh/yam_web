@@ -1,12 +1,11 @@
 import Head from 'next/head';
-import { CMS_NAME } from '@constants';
 import Banner from '@components/Banner';
 import About from '@components/About';
 import Counter from '@components/Counter';
 import Services from '@components/Services';
 import Skill from '@components/Skill';
 import Portfolio from '@components/Portfolio';
-import Testimonial from '@components/Testimonial';
+// import Testimonial from '@components/Testimonial';
 import Blog from '@components/Blog';
 
 import useHomePage from '../hooks/useHomePage';
@@ -36,7 +35,7 @@ const Index = () => {
   return (
     <>
       <Head>
-        <title>Next.js Blog Example with {CMS_NAME}</title>
+        <title>Home Page</title>
       </Head>
       <Banner data={data?.homePage.home} />
       <About data={data?.homePage.aboutMe} />

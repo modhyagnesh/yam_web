@@ -2,7 +2,6 @@ import Head from 'next/head';
 import { useState } from 'react';
 
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { CMS_NAME } from '@constants';
 import usePortfolio from '../hooks/usePortfolio';
 import PortfolioList from '../components/PortfolioList';
 import Pagination from '../components/Pagination';
@@ -15,7 +14,7 @@ const Portfolio = () => {
   return (
     <>
       <Head>
-        <title>Next.js Blog Example with {CMS_NAME}</title>
+        <title>Projects Page</title>
       </Head>
       <section className="page-title" style={{ backgroundColor: 'black' }}>
         <div className="container">

@@ -7,7 +7,7 @@ export default function Meta() {
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta name="apple-mobile-web-app-status-bar-style" content="default" />
       <meta name="apple-mobile-web-app-title" content="Yagnesh Modh" />
-      <meta name="description" content="Best Yagnesh Modh in the world" />
+      <meta name="description" content="Yagnesh Modh Personal Portfolio" />
       <meta name="format-detection" content="telephone=no" />
       <meta name="mobile-web-app-capable" content="yes" />
       <meta name="msapplication-config" content="/browserconfig.xml" />
@@ -33,17 +33,17 @@ export default function Meta() {
       <link rel="shortcut icon" href="/favicon.ico" />
 
       <meta name="twitter:card" content="summary" />
-      <meta name="twitter:url" content="http://localhost:3000/" />
+      <meta name="twitter:url" content="https://yagneshmodh.com/" />
       <meta name="twitter:title" content="Yagnesh Modh" />
-      <meta name="twitter:description" content="Best Yagnesh Modh in the world" />
-      <meta name="twitter:image" content="http://localhost:3000/android-chrome-192x192.png" />
-      <meta name="twitter:creator" content="@DavidWShadow" />
+      <meta name="twitter:description" content="Yagnesh Modh personal portfolio" />
+      <meta name="twitter:image" content="https://yagneshmodh.com/android-chrome-192x192.png" />
+      <meta name="twitter:creator" content="@imyagnesh" />
       <meta property="og:type" content="website" />
       <meta property="og:title" content="Yagnesh Modh" />
-      <meta property="og:description" content="Best Yagnesh Modh in the world" />
+      <meta property="og:description" content="Yagnesh Modh personal portfolio" />
       <meta property="og:site_name" content="Yagnesh Modh" />
-      <meta property="og:url" content="http://localhost:3000" />
-      <meta property="og:image" content="http://localhost:3000/apple-touch-icon.png" />
+      <meta property="og:url" content="https://yagneshmodh.com/" />
+      <meta property="og:image" content="https://yagneshmodh.com/apple-touch-icon.png" />
     </Head>
   );
 }

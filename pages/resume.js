@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import { CMS_NAME } from '@constants';
 import Banner from '@components/Banner';
 import Technologies from '@components/Technologies';
 import WorkExperience from '@components/WorkExperience';
@@ -17,7 +16,7 @@ const Resume = () => {
   return (
     <>
       <Head>
-        <title>Next.js Blog Example with {CMS_NAME}</title>
+        <title>Resume Page</title>
       </Head>
       <Banner data={data?.resumePage} />
       <Technologies data={data?.skills} />
