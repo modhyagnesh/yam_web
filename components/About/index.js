@@ -60,7 +60,7 @@ const About = ({ data }) => {
               <When condition={HTML}>
                 <img
                   className="lazyload"
-                  data-src={data.profilePicture.url.replace('upload/', 'upload/f_auto,q_70,w_320/')}
+                  data-src={data.profilePicture.url.replace('upload/', 'upload/f_auto,w_320/')}
                   title="Profile Picture"
                   alt="Profile avatar"
                 />
