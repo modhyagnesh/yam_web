@@ -46,9 +46,11 @@ const Header = ({ whiteHeader }) => {
       >
         <div className="container">
           {/* Brand */}
-          <a className="navbar-brand" href="#">
-            Yagnesh <span className="theme-bg" />
-          </a>
+          <Link href="/">
+            <a className="navbar-brand">
+              Yagnesh <span className="theme-bg" />
+            </a>
+          </Link>
           {/* / */}
           {/* Mobile Toggle */}
           <button
