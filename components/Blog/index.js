@@ -6,7 +6,7 @@ import BlogList from '../BlogList';
 
 const Blog = ({ data }) => {
   return (
-    <section id="blog" className="section blog-section gray-bg">
+    <section id="blog" className="section blog-section">
       <div className="container">
         <div className="row justify-content-center m-60px-b md-m-25px-b">
           <div className="col-12 col-md-10 col-lg-7">

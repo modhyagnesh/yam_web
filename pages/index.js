@@ -44,7 +44,7 @@ const Index = () => {
       <Services data={dynamicFields?.services} />
       <Skill data={dynamicFields?.skills} />
       <Portfolio data={dynamicFields?.portfolio} />
-      <Testimonial data={dynamicFields?.testimonial} />
+      {/* <Testimonial data={dynamicFields?.testimonial} /> */}
       <Blog data={data?.homePage.blog} />
       {/* <Contact data={data?.homePage.ContactMe} /> */}
     </>
