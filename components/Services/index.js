@@ -26,7 +26,7 @@ const Services = ({ data }) => {
               </span>
               <div>
                 <h5>{modalContent.title}</h5>
-                <p>{modalContent.description}</p>
+                <p style={{ display: 'block' }}>{modalContent.description}</p>
               </div>
             </div>
           </Modal>
