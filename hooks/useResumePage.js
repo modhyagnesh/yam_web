@@ -33,7 +33,7 @@ const useResumePage = () => {
       expirationDate
       neverExpire
     }
-    workExperiences {
+    workExperiences(sort: "startDate:desc") {
       id
       Title
       employmentType
@@ -51,7 +51,7 @@ const useResumePage = () => {
       id
       text
     }
-    educationDetails {
+    educationDetails(sort: "startDate:desc") {
       id
       degree
       studyField
