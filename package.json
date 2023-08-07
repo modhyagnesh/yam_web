@@ -91,5 +91,9 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
+  },
+  "engines": {
+    "node": ">=10 <17",
+    "npm": ">=6.0.0"
   }
 }
