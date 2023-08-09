@@ -9,6 +9,7 @@
 .portfolio-cols {
   display: flex;
   flex-wrap: wrap;
+  flex: 1;
 }
 
 .portfolio-cols-3 {
