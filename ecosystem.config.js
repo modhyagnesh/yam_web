@@ -2,7 +2,7 @@ module.exports = {
   apps: [
     {
       name: 'yam-web',
-      script: 'yarn',
+      script: 'npm',
       args: 'start',
     },
   ],
