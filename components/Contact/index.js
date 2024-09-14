@@ -90,11 +90,15 @@ const Contact = ({ data }) => {
                     <span className="icon theme-bg">
                       <FontAwesomeIcon icon="directions" />
                     </span>
-                    <p>
+                    <a
+                      href={`https://maps.google.com/?q=${data?.address?.addressLine1},${data?.address?.addressLine2},${data?.address?.city},${data?.address?.state},${data?.address?.zipcode}`}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
                       {`${data?.address?.addressLine1}
                     ${data?.address?.addressLine2}
                     ${data?.address?.city},${data?.address?.state} ${data?.address?.zipcode}`}
-                    </p>
+                    </a>
                   </div>
 
                   <If condition={!!data?.emails}>
@@ -102,11 +106,12 @@ const Contact = ({ data }) => {
                       <span className="icon theme-bg">
                         <FontAwesomeIcon icon="envelope" />
                       </span>
-                      <p>
-                        <For each="item" of={data?.emails}>
-                          {item.email} <br />
-                        </For>
-                      </p>
+                      <For each="item" of={data?.emails}>
+                        <a href={`mailto:${item.email}`} target="_blank" rel="noreferrer">
+                          {item.email}
+                        </a>{' '}
+                        <br />
+                      </For>
                     </div>
                   </If>
 
@@ -115,11 +120,12 @@ const Contact = ({ data }) => {
                       <span className="icon theme-bg">
                         <FontAwesomeIcon icon="mobile-alt" />
                       </span>
-                      <p>
-                        <For each="item" of={data?.phoneNumbers}>
-                          {item.phoneNumber} <br />
-                        </For>
-                      </p>
+                      <For each="item" of={data?.phoneNumbers}>
+                        <a href={`tel:${item.phoneNumber}`} target="_blank" rel="noreferrer">
+                          {item.phoneNumber}
+                        </a>{' '}
+                        <br />
+                      </For>
                     </div>
                   </If>
                 </div>
